@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.site-padding {
+  @apply px-64;
+}
+.debug {
+  @apply bg-red-500;
+}
