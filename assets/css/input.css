@@ -8,3 +8,6 @@
 .debug {
   @apply bg-red-500;
 }
+svg {
+  @apply cursor-pointer;
+}
