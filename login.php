@@ -4,7 +4,7 @@
         header('location: index.php');
         exit();
     } 
-    $title = 'Signup - JobSeera';
+    $title = 'Login - JobSeera';
     include_once('components/header.php');
 
     $nav_included = true;
@@ -23,7 +23,7 @@
 <section class="site-padding flex justify-between py-20 h-[80vh]">
     <div class="flex flex-col items-center justify-center basis-1/2">
         <div class="w-7/12 flex justify-center flex-col text-center">
-            <h1 class="text-4xl font-medium">Create an Account</h1>
+            <h1 class="text-4xl font-medium">Log in to Your Account</h1>
             <p class="text-theme_dim_gray text-sm font-medium my-2">
                 Welcome to JobSeera
             </p>
@@ -34,13 +34,13 @@
 
             </p>
 
-            <form id="SignupForm" class="loginSignupForm" action="parts/_signup_handle.php" method="post">
+            <form id="loginForm" class="loginSignupForm" action="parts/_login_handle.php" method="post">
                 <a href="<?php echo $url; ?>"
                     class="flex items-center justify-center border-2 border-theme_gray p-2 rounded-lg space-x-2 my-4">
                     <img class="w-6 h-6"
                         src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
                         alt="google logo" />
-                    <p class="text-sm">Sign up with google</p>
+                    <p class="text-sm">Sign in with google</p>
                 </a>
 
                 <div class="relative my-2">
@@ -57,10 +57,7 @@
                             <?php echo isset($_GET['error_msg']) ? $_GET['error_msg'] : ''; ?>
                         </li>
                     </ul>
-                    <input class="bg-theme_bg_light_yellow border border-theme_gray p-2 rounded-lg focus:outline-none"
-                        type="text" name="user-name" id="user-name" placeholder="Your name" max-length="50"
-                        title="Please enter only letters"
-                        value="<?php echo isset($_GET['user_name']) ? $_GET['user_name'] : ''; ?>" required />
+
                     <input class="bg-theme_bg_light_yellow border border-theme_gray p-2 rounded-lg focus:outline-none"
                         type="email" name="user-email" id="user-email" placeholder="Your email"
                         value="<?php echo isset($_GET['user_email']) ? $_GET['user_email'] : ''; ?>" required />
@@ -77,21 +74,24 @@
                     </div>
                 </div>
                 <button type="submit" class="w-4/5 px-8 py-2 rounded-lg bg-[#50958C] text-white mt-4 mb-2">
-                    Create Account
+                    Log in
                 </button>
             </form>
             <p class=" text-theme_dim_gray">
-                Already have an account?
-                <a href="login.php" class="text-black">Log in</a>
+                Don't have an account?
+                <a href="login.php" class="text-black">Sign up</a>
             </p>
         </div>
     </div>
     <!-- Image Container -->
     <div class="basis-1/2">
-        <img class="w-full h-full object-cover" src="assets/images/signup-hero.jpg" alt="signup hero" />
+        <img class="w-full h-full object-cover object-bottom" src="assets/images/login-hero.jpg" alt="login hero" />
     </div>
 </section>
-
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+feather.replace();
+</script>
 <script src="assets/js/script.js"></script>
 
 <?php

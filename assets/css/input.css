@@ -1,7 +1,5 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
 .site-padding {
   @apply px-64;
 }
@@ -11,3 +9,28 @@
 svg {
   @apply cursor-pointer;
 }
+.resume-form-input {
+  @apply bg-theme_bg_light_yellow border border-theme_border_gray rounded px-2 h-10 font-semibold;
+}
+
+.resume-form-label {
+  @apply text-sm  text-theme_dim_gray
+  text-sm font-bold text-theme_dim_gray mb-1;
+}
+.resume-form-divider {
+  @apply absolute top-1/2 -translate-y-1/2 h-[1px] w-full bg-theme_border_gray;
+}
+.primary-btn {
+  @apply text-white px-4 py-2 rounded-lg;
+}
+.single-input-row {
+  @apply w-2/5;
+}
+.single-input-row-lg {
+  @apply w-3/5;
+}
+.single-input-row-xs {
+  @apply w-1/5;
+}
+
+@tailwind utilities;

@@ -14,7 +14,7 @@ if($method == "POST") {
        
     if(!$stmt->execute()) {
         if(DEBUG_MODE) {
-            echo "Error: ".stmt->error;
+            echo "Error: ".$stmt->error;
         } else {
             $error_msg = "Something went wrong. Please try again.";
         }

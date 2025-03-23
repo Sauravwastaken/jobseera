@@ -15,7 +15,7 @@
             powerful resume away—make it count
         </p>
         <ul class="flex items-center space-x-6">
-            <a href="#" class="bg-red-500 text-white px-4 py-2 rounded-lg">Get Started</a>
+            <a href="form/step1.php" class="bg-theme_orange text-white px-4 py-2 rounded-lg">Get Started</a>
             <a href="#" class="underline">Know more</a>
         </ul>
     </div>

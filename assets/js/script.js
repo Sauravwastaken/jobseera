@@ -1,32 +1,44 @@
-let signUpForm = document.querySelector("#signUpForm");
+let loginSignupForm = document.querySelector(".loginSignupForm");
 let errorMsgP = document.querySelector("#errorMsgP");
 
-signUpForm.addEventListener("submit", (e) => {
-  let userName = document.querySelector("#user-name");
-  let userEmail = document.querySelector("#user-email");
-
-  let nameRegex = /^[a-zA-Z ]+$/;
-  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
+loginSignupForm.addEventListener("submit", (e) => {
   let isValid = true;
   if (isValid) {
     errorMsgP.innerHTML = "";
   }
 
-  if (!nameRegex.test(userName.value)) {
-    isValid = false;
-    errorMsgP.innerHTML += "<li>Please enter only letters in name</li>";
+  if (loginSignupForm.id == "SignupForm") {
+    isValid = nameValidate();
   }
-
-  if (!emailRegex.test(userEmail.value)) {
-    isValid = false;
-    errorMsgP.innerHTML += "<li>Please enter a valid email address</li>";
-  }
+  isValid = emailValidate();
 
   if (!isValid) {
     e.preventDefault();
   }
 });
+
+function emailValidate() {
+  let userEmail = document.querySelector("#user-email");
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  let isValid = true;
+
+  if (!emailRegex.test(userEmail.value)) {
+    isValid = false;
+    errorMsgP.innerHTML += "<li>Please enter a valid email address</li>";
+  }
+  return isValid;
+}
+function nameValidate() {
+  let userName = document.querySelector("#user-name");
+  let isValid = true;
+
+  let nameRegex = /^[a-zA-Z ]+$/;
+  if (!nameRegex.test(userName.value)) {
+    isValid = false;
+    errorMsgP.innerHTML += "<li>Please enter only letters in name</li>";
+  }
+  return isValid;
+}
 
 let signUpShowPassword = document.querySelector("#signUpShowPassword");
 let signUpHidePassword = document.querySelector("#signUpHidePassword");
