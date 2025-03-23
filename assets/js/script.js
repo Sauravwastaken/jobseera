@@ -6,7 +6,7 @@ signUpForm.addEventListener("submit", (e) => {
   let userEmail = document.querySelector("#user-email");
 
   let nameRegex = /^[a-zA-Z ]+$/;
-  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   let isValid = true;
   if (isValid) {

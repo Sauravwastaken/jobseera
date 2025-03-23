@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+        header('location: index.php');
+        exit();
+    } 
     $title = 'Signup - JobSeera';
     include_once('components/header.php');
 
@@ -7,10 +12,10 @@
 
     include_once('parts/_google_config.php');
 
-    // $client->addScope("email");
-    // $client->addScope("profile");
+    $client->addScope("email");
+    $client->addScope("profile");
 
-    // $url = $client->createAuthUrl();
+    $url = $client->createAuthUrl();
 
 
 ?>
@@ -21,6 +26,12 @@
             <h1 class="text-4xl font-medium">Create an Account</h1>
             <p class="text-theme_dim_gray text-sm font-medium my-2">
                 Welcome to JobSeera
+            </p>
+
+            <p class="text-red-500 font-medium" id="errorMsgSignUp">
+
+                <?php echo isset($_GET['error_msg_signup']) ? $_GET['error_msg_signup'] : ''; ?>
+
             </p>
 
             <form id="signUpForm" action="parts/_signup_handle.php" method="post">

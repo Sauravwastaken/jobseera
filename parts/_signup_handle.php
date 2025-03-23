@@ -9,37 +9,34 @@ if($method == "POST") {
 
 
     // Checking if user already exists
-    $sql = "SELECT `user_email` from `users` WHERE `user_email` = '$user_email'";
-
-    $result = mysqli_query($connect,$sql);
-
-    if(!$result) {
+    $stmt = $connect->prepare("SELECT * from `users` WHERE `user_email` = ?");
+    $stmt->bind_param('s',$user_email);
+       
+    if(!$stmt->execute()) {
         if(DEBUG_MODE) {
-            echo "Error: ".mysqli_error($connect);
+            echo "Error: ".stmt->error;
         } else {
             $error_msg = "Something went wrong. Please try again.";
         }
     }
-
-    $count = mysqli_num_rows($result);
-    echo var_dump($count);
+    $result = $stmt->get_result();
+    $count = $result->num_rows;
     if($count < 1) {  
-        $sql = "INSERT INTO `users` (user_name,user_email,user_password) VALUES (?,?,?)";
+        $provider = 'local';
+        $hased_password = password_hash($user_password,PASSWORD_BCRYPT);
 
-        $stmt = $connect->prepare($sql);
+        $stmt2 = $connect->prepare("INSERT INTO `users` (user_name,user_email,user_password,user_provider) VALUES (?,?,?,?)");
+        $stmt2->bind_param('ssss', $user_name,$user_email,$hased_password,$provider);
 
-        if($stmt) {
-         $hased_password = password_hash($user_password,PASSWORD_BCRYPT);
-         $stmt->bind_param('sss',$user_name,$user_email,$hased_password);
+        if(!$stmt2) {
+            echo "error";
+        }
+            
 
-         if(!$stmt->execute()) {
-            if(DEBUG_MODE) {
-                $error_msg =  $stmt->error;
-            } else {
-                $error_msg = "Something went wrong. Please try again.";
-            }
-         } else{
-            $user_id = $stmt->insert_id;
+        if($stmt2->execute()) {
+
+         
+            $user_id = $stmt2->insert_id;
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $user_name;
             $_SESSION['loggedIn'] = true;
@@ -47,10 +44,22 @@ if($method == "POST") {
             header('location: ../index.php');
             exit();
             
-         }
+         
+        } else {
+            echo $stmt2->error;
         }
-    } else {
-        $error_msg = "Email already taken";
+    } else {        
+        $row = $result->fetch_assoc();
+        if($row['user_provider'] == 'google' && $row['user_password'] == NULL) {
+            $error_msg = "An account with this email address alrady exists. Please use google to sign in";
+                         
+        } else if ($row['user_google_linked']) {
+            $error_msg = "An account with this email address alrady exists. Please log in with password or google";  
+        } 
+        
+        else {
+            $error_msg = "An account with this email address alrady exists. Please log in with password";  
+        }
     }  
     header('location: ../signup.php?error_msg='.$error_msg.'&user_name='.$user_name.'&user_email='.$user_email);
 }

@@ -5,5 +5,5 @@
   
       $client->setClientId("694862754349-i46tpb46r7b84akkd00tq88vobl2s425.apps.googleusercontent.com");
       $client->setClientSecret("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");
-      $client->setRedirectUri("http://localhost/redirect.php");
+      $client->setRedirectUri("http://localhost/jobseera/redirect.php");
 ?>
