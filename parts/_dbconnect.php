@@ -11,10 +11,12 @@
     if(!$connect) {
         echo "Error: ".mysqli_connect_error();
     } else{
-        echo "Done";
+        echo "Connected to database";
     }
 
     session_start();
+    error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
     
 ?>

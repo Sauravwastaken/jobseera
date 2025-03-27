@@ -42,11 +42,12 @@ $count = $result->num_rows;
 
 if($count > 0) {
     $row = $result->fetch_assoc();
-    if(!$row['user_google_linked']){
+    if($row['user_google_linked']){
         $error_msg_signup = "An account with this email already exists. Please log in with password";
         echo $error_msg_signup;
     } else {
         $user_id = $row['user_id'];
+        
         $_SESSION['user_id'] = $user_id;
         $_SESSION['user_name'] = $user_name;
         $_SESSION['loggedIn'] = true;

@@ -43,6 +43,7 @@ let linkSelectBtn = document.querySelector("#linkSelectBtn");
 //   }
 // });
 
+$count = 1;
 linkSelectBtn.addEventListener("click", () => {
   let inputValue = linkSelectInput.value;
   let selectValue = linkSelect.value;
@@ -52,11 +53,15 @@ linkSelectBtn.addEventListener("click", () => {
 
   let clone = document.importNode(linkSelectTemplate.content, true);
   let label = clone.querySelector("label");
+  let input = clone.querySelector("input");
   if (selectValue == "Other") {
     selectValue = "Link";
   }
   label.textContent = selectValue ? selectValue + ":" : "Link";
-  label.setAttribute("for", `link-${1}`);
+  label.setAttribute("for", `link-${$count}`);
+  console.log(linkSelectInput);
+  input.setAttribute("name", `link-${$count}`);
+  $count++;
 
   clone.querySelector("input").value = inputValue.replace(/\s+/g, "");
   linkAddDataContainer.appendChild(clone);
