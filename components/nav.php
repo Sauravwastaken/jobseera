@@ -31,7 +31,7 @@
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
               
 ?>
-        <a href="parts/_logout.php"
+        <a href="<?php echo isset($is_sub_folder) ? '../' : ''?>parts/_logout.php"
             class="<?php echo (isset($nav_included) && $nav_included) ? 'bg-theme_green text-white' : 'bg-white'; ?> px-4 py-2 rounded-lg">Log
             out</a>
         <?php } else { ?>

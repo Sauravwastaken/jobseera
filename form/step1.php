@@ -5,7 +5,8 @@
     $is_sub_folder = true;
     $form_step = 1;
     include_once('../components/header.php');
-    include_once('../components/nav.php'); 
+    include_once('../components/nav.php');
+    $showResult = false; 
 
 ?>
 
@@ -21,9 +22,15 @@
       } else{
           $result = mysqli_stmt_get_result($stmt);
           while($row = mysqli_fetch_assoc($result)){
+           
+
             extract($row);
+
             $locationArray = json_decode($location,true);
             $linksArray = json_decode($links,true);
+            if($linksArray) {
+                $showResult = true;
+            }
           }                
           
        
@@ -149,13 +156,13 @@
                             <select class="resume-form-input" name="link-select" id="link-select">
                                 <option value="" disabled selected>Select</option>
 
-                                <option id="select-option-1" value="Linkedin">Linkedin</option>
-                                <option id="select-option-2" value="Github">Github</option>
-                                <option id="select-option-3" value="Portfolio">Portfolio</option>
-                                <option id="select-option-4" value="Instagram">Instagram</option>
-                                <option id="select-option-5" value="LeetCode">LeetCode</option>
-                                <option id="select-option-6" value="Behance">Behance</option>
-                                <option id="select-option-7" value="Other">Other</option>
+                                <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
+                                <option id="select-option-2" value="Github" class="link-id-2">Github</option>
+                                <option id="select-option-3" value="Portfolio" class="link-id-3">Portfolio</option>
+                                <option id="select-option-4" value="Instagram" class="link-id-4">Instagram</option>
+                                <option id="select-option-5" value="LeetCode" class="link-id-5">LeetCode</option>
+                                <option id="select-option-6" value="Behance" class="link-id-6">Behance</option>
+                                <option id="select-option-7" value="Other" class="link-id-7">Other</option>
                             </select>
                         </div>
                         <div class="flex flex-col w-5/12">
@@ -171,28 +178,70 @@
 
                     <!-- Added Data -->
                     <template id="linkSelectTemplate">
-                        
+
                         <div class="flex w-full space-x-0">
                             <div class="flex flex-col single-input-row-lg space-y-2">
                                 <label class="resume-form-label"></label>
                                 <input class="resume-form-input" type="text" value="" />
+                                <input class="hidden link-id" type="text">
                             </div>
                         </div>
                     </template>
 
                     <?php
-                    $count = count($linksArray);
+                    if($showResult) {
+                        $sno = 1;
+                    // $count = count($linksArray);
                     foreach($linksArray as $links=>$link) {
-                                      var_dump($links);
+                        // echo $links;
+                        // echo $link;
+                        $id = substr($links,-1);
+                        switch($id) {
+                            case 1:
+                                $linkName = "Linkedin";
+                                break;
+                        
+                            case 2:
+                                $linkName = "Github";
+                                break;
+                        
+                            case 3:
+                                $linkName = "Portfolio";
+                                break;
+                        
+                            case 4:
+                                $linkName = "Instagram";
+                                break;
+                        
+                            case 5:
+                                $linkName = "LeetCode";
+                                break;
+                        
+                            case 6:
+                                $linkName = "Behance";
+                                break;
+                        
+                            case 7:
+                                $linkName = "Link";
+                                break;
+                        
+                            default:
+                                $linkName = "Link";
+                                break;
+                        }
+                        
                     ?>
                     <div class="flex w-full space-x-0">
                         <div class="flex flex-col single-input-row-lg space-y-2">
-                            <label class="resume-form-label" for="<?php echo $links; ?>"></label>
+
+                            <label class="resume-form-label" for="<?php echo $links; ?>"><?php echo $linkName;?></label>
                             <input class="resume-form-input" type="text" value="<?php echo $link ?>"
-                                name="<?php echo $links; ?>" />
+                                name="<?php echo $links; ?>">
+                            <input class="hidden link-id" type="text" name="link-id-sno-<?php echo $sno;?>"
+                                value="<?php echo $id;?>">
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php $sno++;}} ?>
                 </div>
             </div>
         </div>

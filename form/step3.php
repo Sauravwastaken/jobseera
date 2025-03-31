@@ -10,7 +10,7 @@
 
 <form action="">
     <section class="site-padding py-8">
-        <?php include_once('components/resume_builder_header.php') ;?>
+        <?php include_once('../components/resume_builder_header.php') ;?>
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
@@ -53,11 +53,74 @@
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Start Date:</label>
-                            <input class="resume-form-input" type="tel" required />
+
+                            <div class="flex resume-form-input px-0">
+                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+
+                                    <option value="01" selected>January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                    <?php
+                                            $startYear = 1925;
+                                            $currentYear = date("Y");
+                                        
+                                            for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                                if($year == $currentYear) {
+                                                    echo "<option value=\"$year\" selected>$year</option>";
+                                                } else{
+                                                    echo "<option value=\"$year\">$year</option>";
+                                                }
+                                               
+                                            }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">End Date:</label>
-                            <input class="resume-form-input" type="date" required />
+                            <div class="flex resume-form-input px-0">
+                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+
+                                    <option value="01" selected>January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                    <?php
+                                            $startYear = 1925;
+                                            $currentYear = date("Y");
+                                        
+                                            for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                                if($year == $currentYear) {
+                                                    echo "<option value=\"$year\" selected>$year</option>";
+                                                } else{
+                                                    echo "<option value=\"$year\">$year</option>";
+                                                }
+                                               
+                                            }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="flex flex-col flex-grow-[2]">
                             <label for="first-name" class="resume-form-label">Technology Used:</label>
@@ -243,10 +306,10 @@
             </div>
         </div>
 
-        <?php include_once('components/resume_builder_submit.php'); ?>
+        <?php include_once('../components/resume_builder_submit.php'); ?>
     </section>
 </form>
 
 <?php
-    include_once('components/footer.php');
+    include_once('../components/footer.php');
 ?>

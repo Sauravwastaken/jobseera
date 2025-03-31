@@ -19,7 +19,7 @@
   $stmt = mysqli_prepare($connect,$sql);
 
   if($stmt) {
-    echo "prepared";
+    if(DEBUG_MODE) {echo "prepared";}
       mysqli_stmt_bind_param($stmt,'i',$user_id);
       if(!mysqli_stmt_execute($stmt)) {
           echo "Error in executing query".mysqli_error($connect);
@@ -31,16 +31,20 @@
           $result = mysqli_stmt_get_result($stmt);
           while($row = mysqli_fetch_assoc($result)){
 
-            extract($row);            
+            extract($row);        
+            // var_dump($row);    
                 
             $class_x = json_decode($step2_school_x_details,true);
             $class_xii = json_decode($step2_school_xii_details,true);
             $higher_education = json_decode($step2_higher_education_details,true);
+
             // echo '<pre>';
             // var_dump($higher_education);
             // echo '</pre>';
-            // echo count($higher_education);
-            $showresult = true;
+            // echo $higher_education;
+            if($higher_education) {
+                $showresult = true;
+            }          
 
             
           }                   
@@ -226,8 +230,8 @@
                     //  echo $higher_education_count;
                     //  for($i=0;$i<$higher_education_count;$i++) {
                     
-                    $sno = 1;
                     if($showresult){
+                        $sno = 1;
 
                     foreach($higher_education as $qualification_type => $details) {
                       $id = "";

@@ -20,12 +20,16 @@ if($method == "POST") {
         'joining_date'=>$_POST['xii-joining-date'],
         'passing_date'=>$_POST['xii-passing-date'],
     ];   
+    $higher_education_details = getHigherEducationDetails();
+    // $higher_education_details
     
     $json_school_details_x = json_encode($school_details_x);
     $json_school_details_xii = json_encode($school_details_xii);
-    $json_higher_education_details = getHigherEducationDetails(); 
+    $json_higher_education_details = json_encode($higher_education_details); 
 
-    // echo $json_higher_education_details;
+
+    // echo "here";
+    // var_dump($json_higher_education_details);
     // exit();
     
     // User id
@@ -37,15 +41,22 @@ if($method == "POST") {
     $stmt = mysqli_prepare($connect,$sql);
   
     if($stmt) {
-        echo "prepared";
+        echo "<br>prepared";
         mysqli_stmt_bind_param($stmt,'i',$user_id);
         if(!mysqli_stmt_execute($stmt)) {
             echo "Error in executing query".mysqli_error($connect);
         } else{
-            echo "executed";
+            echo "<br>executed";
             $result = mysqli_stmt_get_result($stmt);
-            if($row = mysqli_fetch_assoc($result) > 0){
+            if($row = mysqli_fetch_assoc($result)){
             //   Do noting for now
+            // ! 
+          
+            updateSchoolDetails($connect,$row,$school_details_x,'step2_school_x_details','step1');
+            updateSchoolDetails($connect,$row,$school_details_xii,'step2_school_xii_details','step1');   
+            updateSchoolDetails($connect,$row,$higher_education_details,'step2_higher_education_details','step1');      
+                   
+            // ! 
             header('location: ../form/step3.php');
             exit();
             } else { 

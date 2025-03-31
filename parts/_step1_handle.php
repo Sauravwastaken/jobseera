@@ -33,9 +33,9 @@ if($method == "POST") {
     } 
 
     // Links
-    $links = [];
-    $links = getLinks($links);
-    // var_dump($links);
+    $links = getLinks();
+    $json_links = json_encode($links,true);
+
    
     // User id
     $user_id = $_SESSION['user_id'];
@@ -53,8 +53,11 @@ if($method == "POST") {
         } else{
             echo "executed";
             $result = mysqli_stmt_get_result($stmt);
-            if($row = mysqli_fetch_assoc($result) > 0){
+            if($row = mysqli_fetch_assoc($result)){
             //   Do noting for now
+
+            updateSchoolDetails($connect,$row,$links,'links','step1');
+
             header('location: ../form/step2.php');
             exit();
             } else {
@@ -69,7 +72,7 @@ if($method == "POST") {
                     echo "prepared";
                 }
                 
-                mysqli_stmt_bind_param($stmt,"issssss",$user_id,$first_name,$last_name,$phone,$email,$json_location,$links);
+                mysqli_stmt_bind_param($stmt,"issssss",$user_id,$first_name,$last_name,$phone,$email,$json_location,$json_links);
             
                 if(!mysqli_stmt_execute($stmt)) {
                     echo "Error in executin query: ".mysqli_error($connect);
