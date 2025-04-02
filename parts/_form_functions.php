@@ -23,6 +23,48 @@
             // exit();
         return $data;
     }
+    function getWorkExperience() {
+        $data = [];
+        echo "function fired";       
+
+        // echo '<pre>';
+        // var_dump($_POST);
+        // echo '</pre>';
+
+        $fields =  [
+            "workExperienceSno",
+            "jobTitle",
+            "companyName",
+            "jobLocation",
+            "employementType",
+            "startDate",
+            "endDate",          
+            "techUsed",
+            "jobDescription",
+          ];
+        
+        
+        $i = 1;
+        while(isset($_POST['workExperienceSno-'.$i])){
+           
+
+            $sno =  $_POST['workExperienceSno-'.$i];
+            foreach($fields as $field) {
+                if($field == 'startDate' || $field == 'endDate') {
+                    $data[$field] = $_POST[$field.'Month-'.$i].'-'.$_POST[$field.'Year-'.$i];
+                } 
+                else{
+                    $data[$field] = $_POST[$field.'-'.$i];
+                }
+            }
+            
+            $i++;
+            
+        }
+        // var_dump(json_encode($data));
+            // exit();
+        return $data;
+    }
 
     function getHigherEducationDetails() {
         $data = [];

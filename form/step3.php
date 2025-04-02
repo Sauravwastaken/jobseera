@@ -1,26 +1,35 @@
 <?php
-    $title = 'Build Your Resume - JobSeera';
-    $is_sub_folder = true;
- 
-    $form_step = 3;
-    include_once('../components/header.php');
-    include_once('../components/nav.php'); 
+include_once('../parts/_dbconnect.php');
+$title = 'Build Your Resume - JobSeera';
+$is_sub_folder = true;
+
+$form_step = 3;
+include_once('../components/header.php');
+include_once('../components/nav.php');
 
 ?>
 
-<form action="">
+
+
+
+<form action="../parts/_step3_handle.php" method="POST">
     <section class="site-padding py-8">
-        <?php include_once('../components/resume_builder_header.php') ;?>
+        <?php include_once('../components/resume_builder_header.php'); ?>
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
             <div class="px-8">
                 <p class="my-4 text-lg">Work Experience</p>
 
-                <div class="space-y-6">
+                <div class="space-y-6" id="workExperienceContainer">
+                    <input class="hidden" id="workExperienceSno" type="text">
+                    <input class="hidden" id="workExperienceEntryType" type="text">
+
+
                     <!-- Row -->
                     <div class="flex w-full space-x-8">
                         <div class="flex items-center space-x-2 flex-grow-0">
+
                             <input type="checkbox" name="" id="" />
                             <label for="first-name" class="resume-form-label">No work experience</label>
                         </div>
@@ -30,16 +39,16 @@
                     <div class="flex w-full space-x-8">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Job Title / Role:</label>
-                            <input class="resume-form-input" type="text" />
+                            <input id="jobTitle" class="resume-form-input" type="text" />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Company / Organization Name:</label>
 
-                            <input class="resume-form-input" type="text" />
+                            <input id="companyName" class="resume-form-input" type="text" />
                         </div>
                         <div class="flex flex-col flex-grow-[2]">
                             <label for="first-name" class="resume-form-label">Location:</label>
-                            <input class="resume-form-input" type="text" />
+                            <input id="jobLocation" class="resume-form-input" type="text" />
                         </div>
                     </div>
 
@@ -47,15 +56,17 @@
                     <div class="flex w-full space-x-8">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Employment Type:</label>
-                            <select class="resume-form-input" name="" id="">
+                            <select id="employementType" class="resume-form-input" name="" id="">
                                 <option value="">Select</option>
+                                <option value="Internship">Internship</option>
                             </select>
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Start Date:</label>
 
                             <div class="flex resume-form-input px-0">
-                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                <select id="startDateMonth" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
+                                    id="">
 
                                     <option value="01" selected>January</option>
                                     <option value="02">February</option>
@@ -70,19 +81,20 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                <select id="startDateYear" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
+                                    id="">
                                     <?php
-                                            $startYear = 1925;
-                                            $currentYear = date("Y");
-                                        
-                                            for ($year = $currentYear + 1; $year >= $startYear; $year--) {
-                                                if($year == $currentYear) {
-                                                    echo "<option value=\"$year\" selected>$year</option>";
-                                                } else{
-                                                    echo "<option value=\"$year\">$year</option>";
-                                                }
-                                               
-                                            }
+                                    $startYear = 1925;
+                                    $currentYear = date("Y");
+
+                                    for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                        if ($year == $currentYear) {
+                                            echo "<option value=\"$year\" selected>$year</option>";
+                                        } else {
+                                            echo "<option value=\"$year\">$year</option>";
+                                        }
+
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -90,7 +102,7 @@
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">End Date:</label>
                             <div class="flex resume-form-input px-0">
-                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                <select id="endDateMonth" class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
 
                                     <option value="01" selected>January</option>
                                     <option value="02">February</option>
@@ -105,19 +117,19 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <select class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
+                                <select id="endDateYear" class="flex-grow px-2 bg-theme_bg_light_yellow" name="" id="">
                                     <?php
-                                            $startYear = 1925;
-                                            $currentYear = date("Y");
-                                        
-                                            for ($year = $currentYear + 1; $year >= $startYear; $year--) {
-                                                if($year == $currentYear) {
-                                                    echo "<option value=\"$year\" selected>$year</option>";
-                                                } else{
-                                                    echo "<option value=\"$year\">$year</option>";
-                                                }
-                                               
-                                            }
+                                    $startYear = 1925;
+                                    $currentYear = date("Y");
+
+                                    for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                        if ($year == $currentYear) {
+                                            echo "<option value=\"$year\" selected>$year</option>";
+                                        } else {
+                                            echo "<option value=\"$year\">$year</option>";
+                                        }
+
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -125,7 +137,7 @@
                         <div class="flex flex-col flex-grow-[2]">
                             <label for="first-name" class="resume-form-label">Technology Used:</label>
 
-                            <input class="resume-form-input" type="text" />
+                            <input id="techUsed" class="resume-form-input" type="text" />
                         </div>
                     </div>
 
@@ -134,182 +146,392 @@
                         <div class="flex flex-col flex-grow-[0 single-input-row">
                             <label for="first-name" class="resume-form-label">Responsibilites:</label>
 
-                            <input class="resume-form-input" type="text" />
+                            <input id="jobDescription" class="resume-form-input" type="text" />
                         </div>
                     </div>
 
                     <!-- Row -->
                     <div class="flex">
-                        <button class="bg-theme_green text-white px-4 py-2 rounded-lg">
+                        <a id='workExperienceBtn' class="bg-theme_green text-white px-4 py-2 rounded-lg">
                             Add
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Added Data -->
 
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Job Title / Role:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Company / Organization Name:</label>
 
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow-[2]">
-                            <label for="first-name" class="resume-form-label">Location:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
+                    <?php
 
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Employment Type:</label>
-                            <select class="resume-form-input" name="" id="">
-                                <option value="">Select</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">Start Date:</label>
-                            <input class="resume-form-input" type="tel" required />
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">End Date:</label>
-                            <input class="resume-form-input" type="date" required />
-                        </div>
-                        <div class="flex flex-col flex-grow-[2]">
-                            <label for="first-name" class="resume-form-label">Technology Used:</label>
+                    $user_id = $_SESSION['user_id'];
+                    $sql = "SELECT * FROM `step3` WHERE step3_user_id = ?";
+                    $stmt = mysqli_prepare($connect, $sql);
 
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
 
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow-[0 single-input-row">
-                            <label for="first-name" class="resume-form-label">Responsibilites:</label>
+                    if ($stmt) {
+                        if (DEBUG_MODE) {
+                            echo "prepared";
+                        }
+                        mysqli_stmt_bind_param($stmt, 'i', $user_id);
+                        if (!mysqli_stmt_execute($stmt)) {
+                            echo "Error in executing query" . mysqli_error($connect);
+                        } else {
+                            if (DEBUG_MODE) {
 
-                            <input class="resume-form-input" type="text" />
+                                echo "executed";
+                            }
+                            $result = mysqli_stmt_get_result($stmt);
+                            $i = 1;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $rowId = $row['step3_id'];
+
+
+                                // echo "<pre>";
+                                // var_dump($row);  
+                    
+                                // echo "</pre>";
+                                // // // extract($row);        
+                                // // echo "hi";
+                    
+
+                                $entryType = $row['step3_entry_type'] ?? '';
+                                $startDate = [];
+                                $endDate = [];
+                                $jobDescription = $row["step3_description"] ?? '';
+                                $jobDetailsJson = $row["step3_details"] ?? '';
+                                $jobDetails = json_decode($jobDetailsJson, true);
+
+                                list($startDate['startMonth'], $startDate['startYear']) = explode('-', $row['step3_start_date']);
+
+                                list($endDate['endMonth'], $endDate['endYear']) = explode('-', $row['step3_end_date']);
+
+
+
+                                // echo $startDate;
+                                // echo "<pre>";
+                                // var_dump($startDate);  
+                    
+                                // echo "</pre>"; 
+                    
+
+
+                                //   exit();
+                                ?>
+                                <?php echo '<br>';
+                                echo "coutn:";
+                                echo $i;
+                                ?>
+                                <input class="hidden workExperienceSno" name="workExperienceSno-<?php echo $i; ?>" type="text"
+                                    value="<?php echo $i; ?>">
+                                <input class="hidden workExperienceEntryType" name="workExperienceEntryType-<?php echo $i; ?>"
+                                    type="text" value="work_experience">
+                                <input class="hidden workExperienceRowId" name="workExperienceRowId-<?php echo $i; ?>" type="text"
+                                    value="<?php echo $rowId ?>">
+                                <!-- Row -->
+                                <div class="flex w-full space-x-8">
+
+                                    <div class="flex flex-col flex-grow">
+
+                                        <label for="first-name" class="resume-form-label">Job Title / Role:</label>
+                                        <input class="resume-form-input jobTitle" type="text" name="jobTitle-<?php echo $i; ?>"
+                                            value="<?php echo isset($jobDetails['jobTitle']) ? $jobDetails['jobTitle'] : ''; ?>">
+                                    </div>
+                                    <div class="flex flex-col flex-grow">
+                                        <label for="first-name" class="resume-form-label">Company / Organization Name:</label>
+
+                                        <input class="resume-form-input companyName" type="text" name="companyName-<?php echo $i; ?>"
+                                            value="<?php echo isset($jobDetails['companyName']) ? $jobDetails['companyName'] : ''; ?>">
+                                    </div>
+                                    <div class="flex flex-col flex-grow-[2]">
+                                        <label for="first-name" class="resume-form-label">Location:</label>
+                                        <input class="resume-form-input jobLocation" type="text" name="jobLocation-<?php echo $i; ?>"
+                                            value="<?php echo isset($jobDetails['jobLocation']) ? $jobDetails['jobLocation'] : ''; ?>">
+                                    </div>
+                                </div>
+
+                                <!-- Row -->
+                                <div class="flex w-full space-x-8">
+                                    <div class="flex flex-col flex-grow">
+                                        <label for="first-name" class="resume-form-label">Employment Type:</label>
+                                        <select class="resume-form-input employementType" name="employementType-<?php echo $i; ?>"
+                                            id="">
+                                            <option value="">Select</option>
+                                            <option value="Internship" selected>Internship</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col single-input-row-xs">
+                                        <label for="first-name" class="resume-form-label">Start Date:</label>
+
+                                        <div class="flex resume-form-input px-0">
+                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow startDateMonth"
+                                                name="startDateMonth-<?php echo $i; ?>" id="">
+                                                <?php
+                                                $months = [
+                                                    "01" => "January",
+                                                    "02" => "February",
+                                                    "03" => "March",
+                                                    "04" => "April",
+                                                    "05" => "May",
+                                                    "06" => "June",
+                                                    "07" => "July",
+                                                    "08" => "August",
+                                                    "09" => "September",
+                                                    "10" => "October",
+                                                    "11" => "November",
+                                                    "12" => "December"
+                                                ];
+                                                foreach ($months as $value => $name) {
+                                                    if ($value == $startDate['startMonth']) {
+                                                        $selected = 'selected';
+                                                    } else {
+                                                        $selected = '';
+
+                                                    }
+                                                    echo "<option value='$value' $selected>$name</option>";
+                                                }
+                                                ?>
+
+
+                                            </select>
+                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow startDateYear"
+                                                name="startDateYear-<?php echo $i; ?>" id="">
+                                                <?php
+                                                $startYear = 1925;
+                                                $currentYear = date("Y");
+
+                                                for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                                    if ($startDate['startYear'] == $year) {
+                                                        $selected = 'selected';
+                                                    } else {
+                                                        $selected = '';
+
+                                                    }
+                                                    echo "<option value=\"$year\" $selected>$year</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col single-input-row-xs">
+                                        <label for="first-name" class="resume-form-label">End Date:</label>
+                                        <div class="flex resume-form-input px-0">
+                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow endDateMonth"
+                                                name="endDateMonth-<?php echo $i; ?>" id="">
+
+                                                <?php
+                                                $months = [
+                                                    "01" => "January",
+                                                    "02" => "February",
+                                                    "03" => "March",
+                                                    "04" => "April",
+                                                    "05" => "May",
+                                                    "06" => "June",
+                                                    "07" => "July",
+                                                    "08" => "August",
+                                                    "09" => "September",
+                                                    "10" => "October",
+                                                    "11" => "November",
+                                                    "12" => "December"
+                                                ];
+                                                foreach ($months as $value => $name) {
+                                                    if ($value == $endDate['endMonth']) {
+                                                        $selected = 'selected';
+                                                    } else {
+                                                        $selected = '';
+
+                                                    }
+                                                    echo "<option value='$value' $selected>$name</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow endDateYear"
+                                                name="endDateYear-<?php echo $i; ?>" id="">
+                                                <?php
+                                                $startYear = 1925;
+                                                $currentYear = date("Y");
+
+                                                for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                                    if ($endDate['endYear'] == $year) {
+                                                        $selected = 'selected';
+                                                    } else {
+                                                        $selected = '';
+
+                                                    }
+                                                    echo "<option value=\"$year\" $selected>$year</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col flex-grow-[2]">
+                                        <label for="first-name" class="resume-form-label">Technology Used:</label>
+
+                                        <input class="resume-form-input techUsed" type="text" name="techUsed-<?php echo $i; ?>"
+                                            value="<?php echo isset($jobDetails['techUsed']) ? $jobDetails['techUsed'] : ''; ?>">
+                                    </div>
+                                </div>
+
+                                <!-- Row -->
+                                <div class="flex w-full space-x-8">
+                                    <div class="flex flex-col flex-grow-[0 single-input-row">
+                                        <label for="first-name" class="resume-form-label">Descritpion:</label>
+
+                                        <input class="resume-form-input jobDescription" type="text"
+                                            name="jobDescription-<?php echo $i; ?>"
+                                            value="<?php echo isset($jobDescription) ? $jobDescription : ''; ?>">
+                                    </div>
+                                </div>
+
+                                <?php
+                                $i++;
+                            }
+                        }
+                    } else {
+                        echo "Could not prepare ";
+                    }
+                    ?>
+
+
+                    <template id="workExperienceTemplate">
+                        <input class="hidden workExperienceSno" name="workExperienceSno" type="text">
+
+                        <input class="hidden workExperienceEntryType" name="workExperienceEntryType" type="text">
+
+                        <!-- Row -->
+                        <div class="flex w-full space-x-8">
+
+                            <div class="flex flex-col flex-grow">
+
+                                <label for="first-name" class="resume-form-label">Job Title / Role:</label>
+                                <input class="resume-form-input jobTitle" type="text" />
+                            </div>
+                            <div class="flex flex-col flex-grow">
+                                <label for="first-name" class="resume-form-label">Company / Organization Name:</label>
+
+                                <input class="resume-form-input companyName" type="text" />
+                            </div>
+                            <div class="flex flex-col flex-grow-[2]">
+                                <label for="first-name" class="resume-form-label">Location:</label>
+                                <input class="resume-form-input jobLocation" type="text" />
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Row -->
+                        <div class="flex w-full space-x-8">
+                            <div class="flex flex-col flex-grow">
+                                <label for="first-name" class="resume-form-label">Employment Type:</label>
+                                <select class="resume-form-input employementType" name="" id="">
+                                    <option value="">Select</option>
+                                    <option value="Internship">Internship</option>
+
+                                </select>
+                            </div>
+                            <div class="flex flex-col single-input-row-xs">
+                                <label for="first-name" class="resume-form-label">Start Date:</label>
+
+                                <div class="flex resume-form-input px-0">
+                                    <select class="flex-grow px-2 bg-theme_bg_light_yellow startDateMonth" name=""
+                                        id="">
+
+                                        <option value="01" selected>January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    <select class="flex-grow px-2 bg-theme_bg_light_yellow startDateYear" name="" id="">
+                                        <?php
+                                        $startYear = 1925;
+                                        $currentYear = date("Y");
+
+                                        for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                            if ($year == $currentYear) {
+                                                echo "<option value=\"$year\" selected>$year</option>";
+                                            } else {
+                                                echo "<option value=\"$year\">$year</option>";
+                                            }
+
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col single-input-row-xs">
+                                <label for="first-name" class="resume-form-label">End Date:</label>
+                                <div class="flex resume-form-input px-0">
+                                    <select class="flex-grow px-2 bg-theme_bg_light_yellow endDateMonth" name="" id="">
+
+                                        <option value="01" selected>January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    <select class="flex-grow px-2 bg-theme_bg_light_yellow endDateYear" name="" id="">
+                                        <?php
+                                        $startYear = 1925;
+                                        $currentYear = date("Y");
+
+                                        for ($year = $currentYear + 1; $year >= $startYear; $year--) {
+                                            if ($year == $currentYear) {
+                                                echo "<option value=\"$year\" selected>$year</option>";
+                                            } else {
+                                                echo "<option value=\"$year\">$year</option>";
+                                            }
+
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col flex-grow-[2]">
+                                <label for="first-name" class="resume-form-label">Technology Used:</label>
+
+                                <input class="resume-form-input techUsed" type="text" />
+                            </div>
+                        </div>
+
+                        <!-- Row -->
+                        <div class="flex w-full space-x-8">
+                            <div class="flex flex-col flex-grow-[0 single-input-row">
+                                <label for="first-name" class="resume-form-label">Descritpion:</label>
+
+                                <input class="resume-form-input jobDescription" type="text" />
+                            </div>
+                        </div>
+
+                    </template>
                 </div>
             </div>
 
-            <div class="relative my-6 h-2">
-                <span class="resume-form-divider"></span>
-            </div>
 
-            <div class="px-8">
-                <p class="my-4 text-lg">Projects</p>
+            <!-- Paste here -->
+            <!-- Paste here -->
 
-                <div class="space-y-6">
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Project Name:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Technology Used:</label>
 
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow-[2]">
-                            <label for="first-name" class="resume-form-label">Project Link:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
 
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Project Type:</label>
-                            <select class="resume-form-input" name="" id="">
-                                <option value="">Select</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">Start Date:</label>
-                            <input class="resume-form-input" type="tel" required />
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">End Date:</label>
-                            <input class="resume-form-input" type="date" required />
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow-[0 single-input-row">
-                            <label for="first-name" class="resume-form-label">Features / Description:</label>
-
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="flex">
-                        <button class="bg-theme_green text-white px-4 py-2 rounded-lg">
-                            Add
-                        </button>
-                    </div>
-
-                    <!-- Added Data -->
-
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Project Name:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Technology Used:</label>
-
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                        <div class="flex flex-col flex-grow-[2]">
-                            <label for="first-name" class="resume-form-label">Project Link:</label>
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Project Type:</label>
-                            <select class="resume-form-input" name="" id="">
-                                <option value="">Select</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">Start Date:</label>
-                            <input class="resume-form-input" type="tel" required />
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">End Date:</label>
-                            <input class="resume-form-input" type="date" required />
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow-[0 single-input-row">
-                            <label for="first-name" class="resume-form-label">Features / Description:</label>
-
-                            <input class="resume-form-input" type="text" />
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <?php include_once('../components/resume_builder_submit.php'); ?>
     </section>
 </form>
+<script src="../assets/js/step3.js"></script>
+
 
 <?php
-    include_once('../components/footer.php');
+include_once('../components/footer.php');
 ?>
