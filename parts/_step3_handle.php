@@ -8,6 +8,10 @@ if ($method == "POST") {
     if (DEBUG_MODE) {
         echo "<br>Inside Post";
     }
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+    // exit();
 
     $user_id = $_SESSION['user_id'];
 
@@ -30,15 +34,15 @@ if ($method == "POST") {
                 $i = 1;
                 while (isset($_POST["workExperienceSno-$i"])) {
                     $entryType = $_POST["workExperienceEntryType-$i"] ?? '';
-                    $startDate = $_POST['startDateMonth-' . $i] . '-' . $_POST['startDateYear-' . $i] ?? '';
-                    $endDate = $_POST['endDateMonth-' . $i] . '-' . $_POST['endDateYear-' . $i] ?? '';
-                    $jobDescription = $_POST["jobDescription-$i"] ?? '';
+                    $startDate = $_POST[$entryType . 'StartDateMonth-' . $i] . '-' . $_POST[$entryType . 'StartDateYear-' . $i] ?? '';
+                    $endDate = $_POST[$entryType . 'EndDateMonth-' . $i] . '-' . $_POST[$entryType . 'EndDateYear-' . $i] ?? '';
+                    $jobDescription = $_POST[$entryType . "jobDescription-$i"] ?? '';
                     $jobDetails = [
-                        'jobTitle' => $_POST["jobTitle-$i"] ?? '',
+                        $entryType . 'Title' => $_POST[$entryType . "Title-$i"] ?? '',
                         'companyName' => $_POST["companyName-$i"] ?? '',
-                        'jobLocation' => $_POST["jobLocation-$i"] ?? '',
-                        'employmentType' => $_POST["employmentType-$i"] ?? '',
-                        'techUsed' => $_POST["techUsed-$i"] ?? ''
+                        $entryType . 'Location' => $_POST[$entryType . "Location-$i"] ?? '',
+                        $entryType . 'Type' => $_POST[$entryType . "Type-$i"] ?? '',
+                        $entryType . 'TechUsed' => $_POST[$entryType . "TechUsed-$i"] ?? ''
                     ];
                     $jobDetailsJson = json_encode($jobDetails);
                     $rowId = $_POST['workExperienceRowId-' . $i] ?? NULL;
@@ -92,15 +96,15 @@ if ($method == "POST") {
                     // echo $i;
                     // echo $_POST["workExperienceSno-$i"];
                     $entryType = $_POST["workExperienceEntryType-$i"] ?? '';
-                    $startDate = $_POST['startDateMonth-' . $i] . '-' . $_POST['startDateYear-' . $i] ?? '';
-                    $endDate = $_POST['endDateMonth-' . $i] . '-' . $_POST['endDateYear-' . $i] ?? '';
-                    $jobDescription = $_POST["jobDescription-$i"] ?? '';
+                    $startDate = $_POST[$entryType . 'StartDateMonth-' . $i] . '-' . $_POST[$entryType . 'StartDateYear-' . $i] ?? '';
+                    $endDate = $_POST[$entryType . 'EndDateMonth-' . $i] . '-' . $_POST[$entryType . 'EndDateYear-' . $i] ?? '';
+                    $jobDescription = $_POST[$entryType . "jobDescription-$i"] ?? '';
                     $jobDetails = [
-                        'jobTitle' => $_POST["jobTitle-$i"] ?? '',
+                        $entryType . 'Title' => $_POST[$entryType . "Title-$i"] ?? '',
                         'companyName' => $_POST["companyName-$i"] ?? '',
-                        'jobLocation' => $_POST["jobLocation-$i"] ?? '',
-                        'employmentType' => $_POST["employmentType-$i"] ?? '',
-                        'techUsed' => $_POST["techUsed-$i"] ?? ''
+                        $entryType . 'Location' => $_POST[$entryType . "Location-$i"] ?? '',
+                        $entryType . 'Type' => $_POST[$entryType . "Type-$i"] ?? '',
+                        $entryType . 'TechUsed' => $_POST[$entryType . "TechUsed-$i"] ?? ''
                     ];
                     $jobDetailsJson = json_encode($jobDetails);
 

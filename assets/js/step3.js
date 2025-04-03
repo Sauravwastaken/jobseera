@@ -1,72 +1,57 @@
-let workExperienceBtn = document.querySelector("#workExperienceBtn");
+let addJobBtn = document.querySelector("#addJobBtn");
+let addProjectBtn = document.querySelector("#addProjectBtn");
 let previouslyAdded = document.querySelectorAll(".workExperienceSno");
 let count = 1 + previouslyAdded.length;
 console.log(count);
 
-workExperienceBtn.addEventListener("click", () => {
-  let container = document.querySelector("#workExperienceContainer");
-  let template = document.querySelector("#workExperienceTemplate");
+addJobBtn.addEventListener("click", () => {
+  makeClone("job");
+});
+addProjectBtn.addEventListener("click", () => {
+  makeClone("project");
+});
+
+function makeClone(entry_type) {
+  let container = document.querySelector(`#${entry_type}Container`);
+  let template = document.querySelector(`#${entry_type}Template`);
 
   let clone = document.importNode(template.content, true);
-  // console.log(clone);
   let cloneData = [
     "workExperienceSno",
     "workExperienceEntryType",
-    "jobTitle",
-    "companyName",
-    "jobLocation",
-    "employementType",
-    "startDateMonth",
-    "startDateYear",
-    "endDateMonth",
-    "endDateYear",
-    "techUsed",
-    "jobDescription",
+    `${entry_type}Title`,
+    ...(entry_type === "job" ? ["companyName"] : []),
+    `${entry_type}Location`,
+    `${entry_type}Type`,
+    `${entry_type}StartDateMonth`,
+    `${entry_type}StartDateYear`,
+    `${entry_type}EndDateMonth`,
+    `${entry_type}EndDateYear`,
+    `${entry_type}TechUsed`,
+    `${entry_type}Description`,
   ];
 
-  // Undergraduate = 1
-  // Postgraduate = 2
-  // Doctorate = 3
-  // Diploma = 4
-  // Professional and vocational = 5
-
-  //   let qualificationType = document.querySelector("#qualificationType");
-  //   let id =
-  //     qualificationType.options[qualificationType.selectedIndex].className.slice(
-  //       22
-  //     );
-  // console.log(id);
-  // id = 2;
   cloneData.forEach((element) => {
-    // console.log(element);
-    let userElement = document.querySelector(`#${element}`);
-    // console.log(userElement);
+    let userElement = document.querySelector(`#${element}`) ?? "";
     let userValue = userElement.value ? userElement.value : "";
-    // console.log(userValue);
 
     let cloneElement = clone.querySelector(`.${element}`);
-    // console.log(element);
+    // console.log("User element: ");
+    // console.log(userElement);
+    // console.log("Clone element: ");
+    // console.log(cloneElement);
 
-    // cloneElement.value = userValue;
-    if (userElement.id == "workExperienceEntryType") {
-      cloneElement.value = "work_experience";
-    } else if (userElement.id == "workExperienceSno") {
-      console.log("yees");
+    if (cloneElement.classList.contains("workExperienceEntryType")) {
+      cloneElement.value = entry_type;
+    } else if (cloneElement.classList.contains("workExperienceSno")) {
       cloneElement.value = count;
     } else {
       cloneElement.value = userValue;
     }
 
-    cloneElement.name = element + "-" + count;
-
-    // if (userElement.id == "qualificationType") {
-    //   cloneElement.name = element + count;
-    // } else {
-    //   cloneElement.name = element + `-${id}`;
-    // }
     cloneElement.name = element + `-${count}`;
   });
 
   container.appendChild(clone);
   count++;
-});
+}

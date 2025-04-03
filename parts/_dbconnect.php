@@ -6,7 +6,7 @@ $database = 'jobseera';
 
 $connect = mysqli_connect($server, $host, $password, $database);
 
-define('DEBUG_MODE', true);
+define('DEBUG_MODE', false);
 
 if (!$connect) {
     echo "Error: " . mysqli_connect_error();
