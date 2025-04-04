@@ -1,64 +1,67 @@
 <?php
-    include_once('../parts/_dbconnect.php');
+include_once('../parts/_dbconnect.php');
 
-    $title = 'Build Your Resume - JobSeera';
+$title = 'Build Your Resume - JobSeera';
 
-    $is_sub_folder = true;
- 
-    $form_step = 2;
-    include_once('../components/header.php');
-    include_once('../components/nav.php'); 
+$is_sub_folder = true;
+$nav_included = true;
 
-    
+$form_step = 2;
+include_once('../components/header.php');
+include_once('../components/nav.php');
+
+
 ?>
 
 <?php
-  $showresult = false;
-  $user_id = $_SESSION['user_id'];
-  $sql = "SELECT * FROM `step2` WHERE step2_user_id = ?";
-  $stmt = mysqli_prepare($connect,$sql);
+$showresult = false;
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM `step2` WHERE step2_user_id = ?";
+$stmt = mysqli_prepare($connect, $sql);
 
-  if($stmt) {
-    if(DEBUG_MODE) {echo "prepared";}
-      mysqli_stmt_bind_param($stmt,'i',$user_id);
-      if(!mysqli_stmt_execute($stmt)) {
-          echo "Error in executing query".mysqli_error($connect);
-      } else{
-          if(DEBUG_MODE) {
+if ($stmt) {
+    if (DEBUG_MODE) {
+        echo "prepared";
+    }
+    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    if (!mysqli_stmt_execute($stmt)) {
+        echo "Error in executing query" . mysqli_error($connect);
+    } else {
+        if (DEBUG_MODE) {
 
-          echo "executed";
-          }
-          $result = mysqli_stmt_get_result($stmt);
-          while($row = mysqli_fetch_assoc($result)){
+            echo "executed";
+        }
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = mysqli_fetch_assoc($result)) {
 
-            extract($row);        
+            extract($row);
             // var_dump($row);    
-                
-            $class_x = json_decode($step2_school_x_details,true);
-            $class_xii = json_decode($step2_school_xii_details,true);
-            $higher_education = json_decode($step2_higher_education_details,true);
+
+            $class_x = json_decode($step2_school_x_details, true);
+            $class_xii = json_decode($step2_school_xii_details, true);
+            $higher_education = json_decode($step2_higher_education_details, true);
 
             // echo '<pre>';
             // var_dump($higher_education);
             // echo '</pre>';
             // echo $higher_education;
-            if($higher_education) {
+            if ($higher_education) {
                 $showresult = true;
-            }          
+            }
 
-            
-          }                   
 
-      }
-  } else{
-      echo "Could not prepare ";
-  }
+        }
+
+    }
+} else {
+    echo "Could not prepare ";
+}
 
 ?>
 
 <form action="../parts/_step2_handle.php" method="POST">
     <section class="site-padding py-8">
-        <?php include_once('../components/resume_builder_header.php') ;?>
+        <?php include_once('../components/resume_builder_header.php'); ?>
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
@@ -98,7 +101,7 @@
                         <div class="flex flex-col single-input-row-xs">
                             <label for="x-passing-date" class="resume-form-label">Year of Passing:</label>
                             <input id="leavingYear" class="resume-form-input" type="text" name="x-passing-date"
-                                value="<?php echo isset($class_x['passing_date']) ? $class_x['passing_date'] : ""?>"
+                                value="<?php echo isset($class_x['passing_date']) ? $class_x['passing_date'] : "" ?>"
                                 required />
                         </div>
                     </div>
@@ -114,14 +117,14 @@
                             <label for="xii-school-name" class="resume-form-label">School Name:</label>
 
                             <input id="institutionName" class="resume-form-input" type="text" name="xii-school-name"
-                                value="<?php echo isset($class_xii['school_name']) ? $class_xii['school_name'] : ""?>" />
+                                value="<?php echo isset($class_xii['school_name']) ? $class_xii['school_name'] : "" ?>" />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="xii-percentage" class="resume-form-label">Percentage:</label>
 
                             <input id="percentage" class="resume-form-input" type="number" step="0.01"
                                 name="xii-percentage"
-                                value="<?php echo isset($class_xii['percentage']) ? $class_xii['percentage'] : ""?>" />
+                                value="<?php echo isset($class_xii['percentage']) ? $class_xii['percentage'] : "" ?>" />
                         </div>
                     </div>
 
@@ -225,97 +228,99 @@
                     </div>
 
                     <!-- Added Data -->
-                    <?php 
+                    <?php
                     //  $higher_education_count = count($higher_education);
                     //  echo $higher_education_count;
                     //  for($i=0;$i<$higher_education_count;$i++) {
                     
-                    if($showresult){
+                    if ($showresult) {
                         $sno = 1;
 
-                    foreach($higher_education as $qualification_type => $details) {
-                      $id = "";
-    
-                      switch ($qualification_type) {
-                          case 'Undergraduation':
-                              $id = 1;
-                              break;
-                              
-                          case 'Postgraduation':
-                              $id = 2;
-                              break;
-                      
-                          case 'Doctorate':
-                              $id = 3;
-                              break;
-                                  
-                          case 'Diploma':
-                              $id = 4;
-                              break;      
-                          
-                      
-                          case 'Professional & Vocational Courses':
-                              $id = 5;
-                              break;   
-                          default:
-                              echo "<br>error in switch case";
-                              break;
-                      }          
-                      
-                      // echo '<pre>';
-                      // var_dump($details);
-                      // echo '</pre>';
-                     ?>
+                        foreach ($higher_education as $qualification_type => $details) {
+                            $id = "";
 
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Qualification:</label>
-                            <input class="resume-form-input qualificationType" type="text"
-                                value="<?php echo isset($qualification_type) ? $qualification_type : ""?>"
-                                name="qualificationType<?php echo $sno?>" readonly>
-                        </div>
-                        <div class="flex flex-col flex-grow-[2]">
-                            <label for="first-name" class="resume-form-label">Course Name:</label>
+                            switch ($qualification_type) {
+                                case 'Undergraduation':
+                                    $id = 1;
+                                    break;
 
-                            <input class="resume-form-input courseName" type="text" name="courseName-<?php echo $id;?>"
-                                value="<?php echo isset($details['courseName']) ? $details['courseName'] : ""?>">
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Branch:</label>
+                                case 'Postgraduation':
+                                    $id = 2;
+                                    break;
 
-                            <input class="resume-form-input branchName" type="text" name="branchName-<?php echo $id;?>"
-                                value="<?php echo isset($details['branchName']) ? $details['branchName'] : ""?>">
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">CGPA:</label>
+                                case 'Doctorate':
+                                    $id = 3;
+                                    break;
 
-                            <input class="resume-form-input higherEducationCgpa" type="text"
-                                name="higherEducationCgpa-<?php echo $id;?>"
-                                value="<?php echo isset($details['higherEducationCgpa']) ? $details['higherEducationCgpa'] : ""?>">
-                        </div>
-                    </div>
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Institution Name:</label>
-                            <input class="resume-form-input higherEducationInstituteName" type="tel" required=""
-                                name="higherEducationInstituteName-<?php echo $id;?>"
-                                value="<?php echo isset($details['higherEducationInstituteName']) ? $details['higherEducationInstituteName'] : ""?>">
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">Year of Joining:</label>
-                            <input class="resume-form-input higherEducationJoiningDate" type="tel" required=""
-                                name="higherEducationJoiningDate-<?php echo $id;?>"
-                                value="<?php echo isset($details['higherEducationJoiningDate']) ? $details['higherEducationJoiningDate'] : ""?>">
-                        </div>
-                        <div class="flex flex-col single-input-row-xs">
-                            <label for="first-name" class="resume-form-label">Year of Passing:</label>
-                            <input class="resume-form-input higherEducationPassingDate" type="text" required=""
-                                name="higherEducationPassingDate-<?php echo $id;?>"
-                                value="<?php echo isset($details['higherEducationPassingDate']) ? $details['higherEducationPassingDate'] : ""?>">
-                        </div>
-                    </div>
+                                case 'Diploma':
+                                    $id = 4;
+                                    break;
 
-                    <?php $sno++;} }?>
+
+                                case 'Professional & Vocational Courses':
+                                    $id = 5;
+                                    break;
+                                default:
+                                    echo "<br>error in switch case";
+                                    break;
+                            }
+
+                            // echo '<pre>';
+                            // var_dump($details);
+                            // echo '</pre>';
+                            ?>
+
+                            <div class="flex w-full space-x-8">
+                                <div class="flex flex-col flex-grow">
+                                    <label for="first-name" class="resume-form-label">Qualification:</label>
+                                    <input class="resume-form-input qualificationType" type="text"
+                                        value="<?php echo isset($qualification_type) ? $qualification_type : "" ?>"
+                                        name="qualificationType<?php echo $sno ?>" readonly>
+                                </div>
+                                <div class="flex flex-col flex-grow-[2]">
+                                    <label for="first-name" class="resume-form-label">Course Name:</label>
+
+                                    <input class="resume-form-input courseName" type="text" name="courseName-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['courseName']) ? $details['courseName'] : "" ?>">
+                                </div>
+                                <div class="flex flex-col flex-grow">
+                                    <label for="first-name" class="resume-form-label">Branch:</label>
+
+                                    <input class="resume-form-input branchName" type="text" name="branchName-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['branchName']) ? $details['branchName'] : "" ?>">
+                                </div>
+                                <div class="flex flex-col flex-grow">
+                                    <label for="first-name" class="resume-form-label">CGPA:</label>
+
+                                    <input class="resume-form-input higherEducationCgpa" type="text"
+                                        name="higherEducationCgpa-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['higherEducationCgpa']) ? $details['higherEducationCgpa'] : "" ?>">
+                                </div>
+                            </div>
+                            <div class="flex w-full space-x-8">
+                                <div class="flex flex-col flex-grow">
+                                    <label for="first-name" class="resume-form-label">Institution Name:</label>
+                                    <input class="resume-form-input higherEducationInstituteName" type="tel" required=""
+                                        name="higherEducationInstituteName-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['higherEducationInstituteName']) ? $details['higherEducationInstituteName'] : "" ?>">
+                                </div>
+                                <div class="flex flex-col single-input-row-xs">
+                                    <label for="first-name" class="resume-form-label">Year of Joining:</label>
+                                    <input class="resume-form-input higherEducationJoiningDate" type="tel" required=""
+                                        name="higherEducationJoiningDate-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['higherEducationJoiningDate']) ? $details['higherEducationJoiningDate'] : "" ?>">
+                                </div>
+                                <div class="flex flex-col single-input-row-xs">
+                                    <label for="first-name" class="resume-form-label">Year of Passing:</label>
+                                    <input class="resume-form-input higherEducationPassingDate" type="text" required=""
+                                        name="higherEducationPassingDate-<?php echo $id; ?>"
+                                        value="<?php echo isset($details['higherEducationPassingDate']) ? $details['higherEducationPassingDate'] : "" ?>">
+                                </div>
+                            </div>
+
+                            <?php $sno++;
+                        }
+                    } ?>
 
                     <!-- Row -->
                     <template id="higherEducationTemplate">
@@ -373,5 +378,5 @@
 <script src="../assets/js/step2.js"></script>
 
 <?php
-    include_once('../components/footer.php');
+include_once('../components/footer.php');
 ?>

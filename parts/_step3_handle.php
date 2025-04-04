@@ -7,10 +7,12 @@ if ($method == "POST") {
 
     if (DEBUG_MODE) {
         echo "<br>Inside Post";
+
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
     }
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
+
     // exit();
 
     $user_id = $_SESSION['user_id'];
@@ -36,7 +38,7 @@ if ($method == "POST") {
                     $entryType = $_POST["workExperienceEntryType-$i"] ?? '';
                     $startDate = $_POST[$entryType . 'StartDateMonth-' . $i] . '-' . $_POST[$entryType . 'StartDateYear-' . $i] ?? '';
                     $endDate = $_POST[$entryType . 'EndDateMonth-' . $i] . '-' . $_POST[$entryType . 'EndDateYear-' . $i] ?? '';
-                    $jobDescription = $_POST[$entryType . "jobDescription-$i"] ?? '';
+                    $jobDescription = $_POST[$entryType . "Description-$i"] ?? '';
                     $jobDetails = [
                         $entryType . 'Title' => $_POST[$entryType . "Title-$i"] ?? '',
                         'companyName' => $_POST["companyName-$i"] ?? '',
@@ -98,7 +100,7 @@ if ($method == "POST") {
                     $entryType = $_POST["workExperienceEntryType-$i"] ?? '';
                     $startDate = $_POST[$entryType . 'StartDateMonth-' . $i] . '-' . $_POST[$entryType . 'StartDateYear-' . $i] ?? '';
                     $endDate = $_POST[$entryType . 'EndDateMonth-' . $i] . '-' . $_POST[$entryType . 'EndDateYear-' . $i] ?? '';
-                    $jobDescription = $_POST[$entryType . "jobDescription-$i"] ?? '';
+                    $jobDescription = $_POST[$entryType . "Description-$i"] ?? '';
                     $jobDetails = [
                         $entryType . 'Title' => $_POST[$entryType . "Title-$i"] ?? '',
                         'companyName' => $_POST["companyName-$i"] ?? '',

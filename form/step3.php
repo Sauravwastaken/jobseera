@@ -2,6 +2,7 @@
 include_once('../parts/_dbconnect.php');
 $title = 'Build Your Resume - JobSeera';
 $is_sub_folder = true;
+$nav_included = true;
 
 $form_step = 3;
 include_once('../components/header.php');
@@ -57,8 +58,12 @@ include_once('../components/nav.php');
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Employment Type:</label>
                             <select id="jobType" class="resume-form-input" name="" id="">
-                                <option value="">Select</option>
+                                <option value="" selected disabled>Select</option>
+                                <option value="Full-Time">Full-Time</option>
+                                <option value="Part-Time">Part-Time</option>
+                                <option value="Freelance">Freelance</option>
                                 <option value="Internship">Internship</option>
+                                <option value="Self-Employed">Self-Employed</option>
                             </select>
                         </div>
                         <div class="flex flex-col single-input-row-xs">
@@ -259,8 +264,28 @@ include_once('../components/nav.php');
                                     <div class="flex flex-col flex-grow">
                                         <label for="first-name" class="resume-form-label">Employment Type:</label>
                                         <select class="resume-form-input jobType" name="jobType-<?php echo $i; ?>" id="">
-                                            <option value="">Select</option>
-                                            <option value="Internship" selected>Internship</option>
+                                            <?php
+                                            $employment_types = [
+                                                "Full-Time",
+                                                "Part-Time",
+                                                "Freelance",
+                                                "Internship",
+                                                "Self-Employed"
+                                            ];
+
+
+                                            foreach ($employment_types as $types) {
+                                                if ($types == $jobDetails['jobType']) {
+                                                    $selected = 'selected';
+                                                } else {
+                                                    $selected = '';
+
+                                                }
+                                                echo "<option value='$types' $selected>$types</option>";
+                                            }
+
+
+                                            ?>
 
                                         </select>
                                     </div>
@@ -427,8 +452,12 @@ include_once('../components/nav.php');
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Employment Type:</label>
                                 <select class="resume-form-input jobType" name="" id="">
-                                    <option value="">Select</option>
-                                    <option value="Internship">Internship</option>
+
+                                    <option value="Full-Time">Full-Time</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                    <option value="Freelance">Freelance</option>
+                                    <option value="Internship" selected>Internship</option>
+                                    <option value="Self-Employed">Self-Employed</option>
 
                                 </select>
                             </div>
@@ -571,9 +600,19 @@ include_once('../components/nav.php');
                     <div class="flex w-full space-x-8">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Project Type:</label>
-                            <select id="projectType" class="resume-form-input" name="" id="">
-                                <option value="">Select</option>
-                                <option value="Internship">Internship</option>
+                            <select id="projectType" class="resume-form-input" name="">
+                                <option value="" selected disabled>Select</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Open Source">Open Source</option>
+                                <option value="Freelance">Freelance</option>
+                                <option value="Client Work">Client Work</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Research">Research</option>
+                                <option value="Hackathon">Hackathon</option>
+                                <option value="Startup">Startup</option>
+                                <option value="Enterprise">Enterprise</option>
+                                <option value="Other">Other</option>
+
                             </select>
                         </div>
                         <div class="flex flex-col single-input-row-xs">
@@ -758,7 +797,7 @@ include_once('../components/nav.php');
                                     </div>
                                     <div class="flex flex-col flex-grow-[2]">
                                         <label for="first-name" class="resume-form-label">Link:</label>
-                                        <input class="resume-form-input ProjectLocation" type="text"
+                                        <input class="resume-form-input projectLocation" type="text"
                                             name="projectLocation-<?php echo $i; ?>"
                                             value="<?php echo isset($projectDetails['projectLocation']) ? $projectDetails['projectLocation'] : ''; ?>">
                                     </div>
@@ -768,9 +807,35 @@ include_once('../components/nav.php');
                                 <div class="flex w-full space-x-8">
                                     <div class="flex flex-col single-input-row-xs">
                                         <label for="first-name" class="resume-form-label">Project Type:</label>
-                                        <select class="resume-form-input projectType" name="projectType-<?php echo $i; ?>" id="">
-                                            <option value="">Select</option>
-                                            <option value="Internship">Internship</option>
+                                        <select class="resume-form-input projectType" name="projectType-<?php echo $i; ?>">
+                                            <?php
+                                            $project_types = [
+                                                "Personal",
+                                                "Open Source",
+                                                "Freelance",
+                                                "Client Work",
+                                                "Academic",
+                                                "Research",
+                                                "Hackathon",
+                                                "Startup",
+                                                "Enterprise",
+                                                "Other"
+                                            ];
+
+
+
+                                            foreach ($project_types as $types) {
+                                                if ($types == $projectDetails['projectType']) {
+                                                    $selected = 'selected';
+                                                } else {
+                                                    $selected = '';
+
+                                                }
+                                                echo "<option value='$types' $selected>$types</option>";
+                                            }
+
+
+                                            ?>
 
                                         </select>
                                     </div>
@@ -920,7 +985,7 @@ include_once('../components/nav.php');
                             </div>
                             <div class="flex flex-col flex-grow-[2]">
                                 <label for="first-name" class="resume-form-label">Link:</label>
-                                <input class="resume-form-input ProjectLocation" type="text" />
+                                <input class="resume-form-input projectLocation" type="text" />
                             </div>
                         </div>
 
@@ -928,9 +993,17 @@ include_once('../components/nav.php');
                         <div class="flex w-full space-x-8">
                             <div class="flex flex-col single-input-row-xs">
                                 <label for="first-name" class="resume-form-label">Project Type:</label>
-                                <select class="resume-form-input projectType" name="" id="">
-                                    <option value="">Select</option>
-                                    <option value="Internship">Internship</option>
+                                <select class="resume-form-input projectType" name="">
+                                    <option value="Personal">Personal</option>
+                                    <option value="Open Source">Open Source</option>
+                                    <option value="Freelance">Freelance</option>
+                                    <option value="Client Work">Client Work</option>
+                                    <option value="Academic">Academic</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Hackathon">Hackathon</option>
+                                    <option value="Startup">Startup</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                    <option value="Other">Other</option>
 
                                 </select>
                             </div>

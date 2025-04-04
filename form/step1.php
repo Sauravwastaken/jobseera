@@ -1,50 +1,51 @@
 <?php
-    include_once('../parts/_dbconnect.php');
+include_once('../parts/_dbconnect.php');
 
-    $title = 'Build Your Resume - JobSeera';
-    $is_sub_folder = true;
-    $form_step = 1;
-    include_once('../components/header.php');
-    include_once('../components/nav.php');
-    $showResult = false; 
+$title = 'Build Your Resume - JobSeera';
+$is_sub_folder = true;
+$nav_included = true;
+$form_step = 1;
+include_once('../components/header.php');
+include_once('../components/nav.php');
+$showResult = false;
 
 ?>
 
 <?php
-  $user_id = $_SESSION['user_id'];
-  $sql = "SELECT * FROM `step1` WHERE step1_user_id = ?";
-  $stmt = mysqli_prepare($connect,$sql);
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM `step1` WHERE step1_user_id = ?";
+$stmt = mysqli_prepare($connect, $sql);
 
-  if($stmt) {
-      mysqli_stmt_bind_param($stmt,'i',$user_id);
-      if(!mysqli_stmt_execute($stmt)) {
-          echo "Error in executing query".mysqli_error($connect);
-      } else{
-          $result = mysqli_stmt_get_result($stmt);
-          while($row = mysqli_fetch_assoc($result)){
-           
+if ($stmt) {
+    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    if (!mysqli_stmt_execute($stmt)) {
+        echo "Error in executing query" . mysqli_error($connect);
+    } else {
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = mysqli_fetch_assoc($result)) {
+
 
             extract($row);
 
-            $locationArray = json_decode($location,true);
-            $linksArray = json_decode($links,true);
-            if($linksArray) {
+            $locationArray = json_decode($location, true);
+            $linksArray = json_decode($links, true);
+            if ($linksArray) {
                 $showResult = true;
             }
-          }                
-          
-       
+        }
 
-      }
-  } else{
-      echo "Could not prepare ";
-  }
+
+
+    }
+} else {
+    echo "Could not prepare ";
+}
 
 ?>
 
 <form action="../parts/_step<?php echo $form_step; ?>_handle.php" method="POST">
     <section class="site-padding py-8">
-        <?php include_once('../components/resume_builder_header.php') ;?>
+        <?php include_once('../components/resume_builder_header.php'); ?>
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
@@ -131,7 +132,7 @@
                         <div class="flex flex-col flex-grow">
                             <label for="location-city" class="resume-form-label">City:</label>
                             <input class="resume-form-input" type="text" id="location-city" name="location-city"
-                                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : '';?>" />
+                                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : ''; ?>" />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="location-area" class="resume-form-label">Area / Locality:</label>
@@ -189,59 +190,61 @@
                     </template>
 
                     <?php
-                    if($showResult) {
+                    if ($showResult) {
                         $sno = 1;
-                    // $count = count($linksArray);
-                    foreach($linksArray as $links=>$link) {
-                        // echo $links;
-                        // echo $link;
-                        $id = substr($links,-1);
-                        switch($id) {
-                            case 1:
-                                $linkName = "Linkedin";
-                                break;
-                        
-                            case 2:
-                                $linkName = "Github";
-                                break;
-                        
-                            case 3:
-                                $linkName = "Portfolio";
-                                break;
-                        
-                            case 4:
-                                $linkName = "Instagram";
-                                break;
-                        
-                            case 5:
-                                $linkName = "LeetCode";
-                                break;
-                        
-                            case 6:
-                                $linkName = "Behance";
-                                break;
-                        
-                            case 7:
-                                $linkName = "Link";
-                                break;
-                        
-                            default:
-                                $linkName = "Link";
-                                break;
-                        }
-                        
-                    ?>
-                    <div class="flex w-full space-x-0">
-                        <div class="flex flex-col single-input-row-lg space-y-2">
+                        // $count = count($linksArray);
+                        foreach ($linksArray as $links => $link) {
+                            // echo $links;
+                            // echo $link;
+                            $id = substr($links, -1);
+                            switch ($id) {
+                                case 1:
+                                    $linkName = "Linkedin";
+                                    break;
 
-                            <label class="resume-form-label" for="<?php echo $links; ?>"><?php echo $linkName;?></label>
-                            <input class="resume-form-input" type="text" value="<?php echo $link ?>"
-                                name="<?php echo $links; ?>">
-                            <input class="hidden link-id" type="text" name="link-id-sno-<?php echo $sno;?>"
-                                value="<?php echo $id;?>">
-                        </div>
-                    </div>
-                    <?php $sno++;}} ?>
+                                case 2:
+                                    $linkName = "Github";
+                                    break;
+
+                                case 3:
+                                    $linkName = "Portfolio";
+                                    break;
+
+                                case 4:
+                                    $linkName = "Instagram";
+                                    break;
+
+                                case 5:
+                                    $linkName = "LeetCode";
+                                    break;
+
+                                case 6:
+                                    $linkName = "Behance";
+                                    break;
+
+                                case 7:
+                                    $linkName = "Link";
+                                    break;
+
+                                default:
+                                    $linkName = "Link";
+                                    break;
+                            }
+
+                            ?>
+                            <div class="flex w-full space-x-0">
+                                <div class="flex flex-col single-input-row-lg space-y-2">
+
+                                    <label class="resume-form-label" for="<?php echo $links; ?>"><?php echo $linkName; ?></label>
+                                    <input class="resume-form-input" type="text" value="<?php echo $link ?>"
+                                        name="<?php echo $links; ?>">
+                                    <input class="hidden link-id" type="text" name="link-id-sno-<?php echo $sno; ?>"
+                                        value="<?php echo $id; ?>">
+                                </div>
+                            </div>
+                            <?php $sno++;
+                        }
+                    } ?>
                 </div>
             </div>
         </div>
@@ -252,5 +255,5 @@
 
 <script src="../assets/js/step1.js"></script>
 <?php
-    include_once('../components/footer.php');
+include_once('../components/footer.php');
 ?>
