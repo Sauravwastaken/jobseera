@@ -626,14 +626,14 @@ include_once('../components/nav.php');
                                                 $startYear = 1925;
                                                 $currentYear = date("Y");
 
-                                                for ($i = $currentYear + 1; $i >= $startYear; $i--) {
-                                                    if ($i == $year) {
+                                                for ($increment = $currentYear + 1; $increment >= $startYear; $increment--) {
+                                                    if ($increment == $year) {
                                                         $selected = 'selected';
                                                     } else {
                                                         $selected = '';
 
                                                     }
-                                                    echo "<option value=\"$i\" $selected>$i</option>";
+                                                    echo "<option value=\"$increment\" $selected>$increment</option>";
                                                 }
                                                 ?>
                                             </select>

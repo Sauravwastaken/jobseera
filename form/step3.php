@@ -398,7 +398,7 @@ include_once('../components/nav.php');
 
                                         <input class="resume-form-input jobTechUsed" type="text"
                                             name="jobTechUsed-<?php echo $i; ?>"
-                                            value="<?php echo isset($jobDetails['techUsed']) ? $jobDetails['techUsed'] : ''; ?>">
+                                            value="<?php echo isset($jobDetails['jobTechUsed']) ? $jobDetails['jobTechUsed'] : ''; ?>">
                                     </div>
                                 </div>
 

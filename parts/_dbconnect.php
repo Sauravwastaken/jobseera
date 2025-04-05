@@ -10,12 +10,12 @@ define('DEBUG_MODE', true);
 
 if (!$connect) {
     echo "Error: " . mysqli_connect_error();
-} else {
-    if (DEBUG_MODE) {
-
-        echo "Connected to database";
-    }
 }
+//  else {
+//     if (DEBUG_MODE) {
+//         echo "Connected to database";
+//     }
+// }
 
 session_start();
 if (DEBUG_MODE) {

@@ -110,6 +110,12 @@ if ($method == "POST") {
                     ];
                     $jobDetailsJson = json_encode($jobDetails);
 
+                    // echo "<pre>";
+                    // var_dump($_POST);
+                    // var_dump($jobDetailsJson);
+                    // echo "</pre>";
+                    // exit();
+
                     $sql = "INSERT INTO `step3` (`step3_user_id`, `step3_entry_type`, `step3_details`,`step3_start_date`,`step3_end_date`,`step3_description`) VALUES (?, ?, ?, ?, ?, ?)";
                     $stmt = mysqli_prepare($connect, $sql);
                     if (!$stmt) {

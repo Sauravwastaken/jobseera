@@ -5,10 +5,18 @@
         class="bg-theme_orange primary-btn text-lg px-6">
         Previous
     </a>
-    <a href="step<?php echo $form_step
-        + 1; ?>.php">
-        <button type="submit" class="bg-theme_orange primary-btn text-lg px-6">
+    <?php if ($form_step == 4) {
+
+        ?>
+        <a class="bg-theme_orange primary-btn text-lg px-6" href="../parts/generate.php">
             Next
-        </button>
-    </a>
+        </a>
+    <?php } else { ?>
+        <a href="step<?php echo $form_step
+            + 1; ?>.php">
+            <button type="submit" class="bg-theme_orange primary-btn text-lg px-6">
+                Next
+            </button>
+        </a>
+    <?php } ?>
 </div>

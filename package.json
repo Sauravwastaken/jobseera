@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "feather-icons": "^4.29.2",
+    "puppeteer": "^24.6.0",
     "vite": "^6.2.2"
   },
   "scripts": {
