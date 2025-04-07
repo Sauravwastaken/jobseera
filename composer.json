@@ -1,6 +1,6 @@
 {
     "require": {
         "google/apiclient": "^2.18",
-        "spatie/browsershot": "^5.0"
+        "dompdf/dompdf": "^3.1"
     }
 }

@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo isset($title) ? $title : 'JobSeera'; ?></title>
-    <link rel="stylesheet" href="<?php echo isset($is_sub_folder) ? '../' : ''?>assets/css/style.css" />
+    <link rel="stylesheet" href="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/css/style.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

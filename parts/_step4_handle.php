@@ -1,4 +1,6 @@
 <?php
+ob_start(); // Start buffering
+
 include_once('_dbconnect.php');
 include_once('_form_functions.php');
 
@@ -8,9 +10,9 @@ if ($method == "POST") {
     if (DEBUG_MODE) {
         echo "<br>Inside Post";
 
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
     }
 
     // exit();
@@ -167,7 +169,7 @@ if ($method == "POST") {
                     $i++;
                 }
 
-                header('location: ../form/step4.php');
+                header('location: ../generate.php');
                 exit();
 
             } else {
@@ -255,7 +257,7 @@ if ($method == "POST") {
 
                     $i++;
                 }
-                header('location: ../form/step4.php');
+                header('location: ../generate.php');
                 exit();
 
             }
@@ -265,4 +267,5 @@ if ($method == "POST") {
         echo "Could not prepare ";
     }
 }
+ob_end_flush(); // Output everything now
 ?>

@@ -8,8 +8,11 @@
     <?php if ($form_step == 4) {
 
         ?>
-        <a class="bg-theme_orange primary-btn text-lg px-6" href="../parts/generate.php">
-            Next
+        <a>
+            <button type="submit" class="bg-theme_orange primary-btn text-lg px-6">
+                Submit
+            </button>
+
         </a>
     <?php } else { ?>
         <a href="step<?php echo $form_step
