@@ -17,7 +17,16 @@ include_once('components/nav.php');
             powerful resume away—make it count
         </p>
         <ul class="flex items-center space-x-6">
-            <a href="form/step1.php" class="bg-theme_orange text-white px-4 py-2 rounded-lg">Get Started</a>
+            <?php
+
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+                $href = 'form/step1.php';
+            } else {
+                $href = 'signup.php';
+
+            }
+            ?>
+            <a href="<?php echo $href; ?>" class=" bg-theme_orange text-white px-4 py-2 rounded-lg">Get Started</a>
             <a href="#" class="underline">Know more</a>
         </ul>
     </div>

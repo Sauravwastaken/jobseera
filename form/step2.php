@@ -187,12 +187,12 @@ if ($stmt) {
                         <div class="flex flex-col flex-grow-[2]">
                             <label for="first-name" class="resume-form-label">Course Name:</label>
 
-                            <input class="resume-form-input" type="text" id="courseName" value="b.voc" />
+                            <input class="resume-form-input" type="text" id="courseName" value="" />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Branch:</label>
 
-                            <input class="resume-form-input" id="branchName" type="text" value="web dev" />
+                            <input class="resume-form-input" id="branchName" type="text" value="" />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">CGPA:</label>
@@ -205,18 +205,15 @@ if ($stmt) {
                     <div class="flex w-full space-x-8">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Institution Name:</label>
-                            <input class="resume-form-input" type="tel" id="higherEducationInstituteName" value="ymca"
-                                required />
+                            <input class="resume-form-input" type="tel" id="higherEducationInstituteName" value="" />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Year of Joining:</label>
-                            <input class="resume-form-input" type="tel" id="higherEducationJoiningDate" value="2023"
-                                required />
+                            <input class="resume-form-input" type="tel" id="higherEducationJoiningDate" value="" />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Year of Passing:</label>
-                            <input class="resume-form-input" type="text" id="higherEducationPassingDate" value="2026"
-                                required />
+                            <input class="resume-form-input" type="text" id="higherEducationPassingDate" value="" />
                         </div>
                     </div>
 
