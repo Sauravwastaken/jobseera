@@ -1,4 +1,11 @@
 <?php
+define('DEBUG_MODE', true);
+if (DEBUG_MODE) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
+
+
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $base_url = "http://localhost/jobseera/";
     $server = 'localhost';
@@ -13,10 +20,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $database = "jobseera";
 }
 
+$connect = mysqli_connect($server, $user, $password, $database);
 
-$connect = mysqli_connect($server, $host, $password, $database);
 
-define('DEBUG_MODE', true);
 
 if (!$connect) {
     echo "Error: " . mysqli_connect_error();
@@ -28,10 +34,6 @@ if (!$connect) {
 // }
 
 session_start();
-if (DEBUG_MODE) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-}
 
 
 
