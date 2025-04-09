@@ -1,6 +1,6 @@
 <?php
 $realPath = realpath(__DIR__ . '/assets/fonts/EBGaramond');
-$fontPath = $realPath ? 'file://' . $realPath : '../assets/fonts/EBGaramond';
+$fontPath = $realPath ? 'file://' . $realPath : 'assets/fonts/EBGaramond';
 ?>
 
 @page {
