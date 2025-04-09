@@ -8,7 +8,7 @@ $client->setClientSecret("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");
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
       $redirect_uri = "http://localhost/jobseera/redirect.php";
 } else {
-      $redirect_uri = "https://jobseera.sauravwastaken.live";
+      $redirect_uri = "https://jobseera.sauravwastaken.live/redirect.php";
 }
 
 $client->setRedirectUri($redirect_uri);
