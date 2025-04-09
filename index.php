@@ -1,8 +1,10 @@
-<?php 
-    include_once('components/header.php'); 
-    include_once('components/nav.php'); 
+<?php
+include_once 'config.paths.php';
 
-    
+include_once('components/header.php');
+include_once('components/nav.php');
+
+
 ?>
 
 <section class="site-padding h-[680px]">

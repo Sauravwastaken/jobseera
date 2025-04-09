@@ -1,13 +1,14 @@
 <?php
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-
+    $base_url = "http://localhost/jobseera/";
     $server = 'localhost';
-    $host = 'root';
+    $user = 'root';
     $password = "";
     $database = 'jobseera';
 } else {
+    $base_url = "http://206.189.129.236/";
     $server = "localhost";
-    $host = "rppt";
+    $user = "root";
     $password = "wP59IT`I9N1F";
     $database = "jobseera";
 }
