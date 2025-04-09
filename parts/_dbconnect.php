@@ -1,8 +1,17 @@
 <?php
-$server = 'localhost';
-$host = 'root';
-$password = "";
-$database = 'jobseera';
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+
+    $server = 'localhost';
+    $host = 'root';
+    $password = "";
+    $database = 'jobseera';
+} else {
+    $server = "localhost";
+    $host = "rppt";
+    $password = "wP59IT`I9N1F";
+    $database = "jobseera";
+}
+
 
 $connect = mysqli_connect($server, $host, $password, $database);
 
