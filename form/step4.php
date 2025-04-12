@@ -84,10 +84,7 @@ include_once('../components/nav.php');
                                 $level = $row['step4_level'];
 
                                 ?>
-                                <?php echo '<br>';
-                                echo "count:";
-                                echo $i;
-                                ?>
+
                                 <input class="hidden cvSummarySno" type="text" name="cvSummarySno-<?php echo $i; ?>">
                                 <input class="hidden cvSummaryEntryType" type="text" value="skill"
                                     name="cvSummaryEntryType-<?php echo $i; ?>">
@@ -141,6 +138,7 @@ include_once('../components/nav.php');
                         echo "Could not prepare ";
                     }
                     ?>
+
                     <!-- Template -->
                     <template id="skillTemplate">
                         <input class="hidden cvSummarySno" type="text">
@@ -886,9 +884,10 @@ include_once('../components/nav.php');
     </section>
 </form>
 
+<?php
+include_once('../components/footer_scripts.php');
+?>
 <script src="../assets/js/step4.js"></script>
-
-
 <?php
 include_once('../components/footer.php');
 ?>

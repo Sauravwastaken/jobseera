@@ -152,19 +152,77 @@ if ($stmt) {
 
                 <div class="space-y-6" id="linkAddDataContainer">
                     <!-- Row -->
+
+
                     <div class="flex w-full space-x-4">
                         <div class="flex flex-col flex-grow-0">
                             <select class="resume-form-input" name="link-select" id="link-select">
-                                <option value="" disabled selected>Select</option>
+                                <option value="" selected>Select</option>
+                                <?php
+                                foreach ($linksArray as $links => $link) {
+                                    $alreadyAddedLinkIdArray[] = substr($links, -1);
+                                }
 
-                                <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
+                                for ($i = 0; $i < 7; $i++) {
+                                    switch ($i + 1) {
+                                        case 1:
+                                            $linkName = "Linkedin";
+                                            break;
+
+                                        case 2:
+                                            $linkName = "Github";
+                                            break;
+
+                                        case 3:
+                                            $linkName = "Portfolio";
+                                            break;
+
+                                        case 4:
+                                            $linkName = "Instagram";
+                                            break;
+
+                                        case 5:
+                                            $linkName = "LeetCode";
+                                            break;
+
+                                        case 6:
+                                            $linkName = "Behance";
+                                            break;
+
+                                        case 7:
+                                            $linkName = "Other";
+                                            break;
+
+                                        default:
+                                            $linkName = "Link";
+                                            break;
+                                    }
+
+                                    if (!in_array($i + 1, $alreadyAddedLinkIdArray)) {
+
+
+
+
+                                        ?>
+                                        <option id="select-option-<?php echo $i + 1; ?>" value="<?php echo $linkName; ?>"
+                                            class="link-id-<?php echo $i + 1; ?>">
+                                            <?php echo $linkName; ?>
+                                        </option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+
+
+                                <!-- <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
                                 <option id="select-option-2" value="Github" class="link-id-2">Github</option>
                                 <option id="select-option-3" value="Portfolio" class="link-id-3">Portfolio</option>
                                 <option id="select-option-4" value="Instagram" class="link-id-4">Instagram</option>
                                 <option id="select-option-5" value="LeetCode" class="link-id-5">LeetCode</option>
                                 <option id="select-option-6" value="Behance" class="link-id-6">Behance</option>
-                                <option id="select-option-7" value="Other" class="link-id-7">Other</option>
+                                <option id="select-option-7" value="Other" class="link-id-7">Other</option> -->
                             </select>
+
                         </div>
                         <div class="flex flex-col w-5/12">
                             <input class="resume-form-input" type="text" name="link-select-input" id="link-select-input"
@@ -235,7 +293,8 @@ if ($stmt) {
                             <div class="flex w-full space-x-0">
                                 <div class="flex flex-col single-input-row-lg space-y-2">
 
-                                    <label class="resume-form-label" for="<?php echo $links; ?>"><?php echo $linkName; ?></label>
+                                    <label class="resume-form-label"
+                                        for="<?php echo $links; ?>"><?php echo $linkName; ?></label>
                                     <input class="resume-form-input" type="text" value="<?php echo $link ?>"
                                         name="<?php echo $links; ?>">
                                     <input class="hidden link-id" type="text" name="link-id-sno-<?php echo $sno; ?>"
@@ -253,7 +312,11 @@ if ($stmt) {
     </section>
 </form>
 
+<?php
+include_once('../components/footer_scripts.php');
+?>
 <script src="../assets/js/step1.js"></script>
 <?php
 include_once('../components/footer.php');
+
 ?>

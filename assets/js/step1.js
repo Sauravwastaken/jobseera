@@ -10,7 +10,6 @@ let linkSelectBtn = document.querySelector("#linkSelectBtn");
 //   switch (value) {
 //     case "Linkedin":
 //       linkSelectInput.placeholder = "@Username or link";
-
 //       linkSelectInput.value = "";
 //       link = "https://www.linkedin.com/in/";
 //       break;
@@ -19,7 +18,6 @@ let linkSelectBtn = document.querySelector("#linkSelectBtn");
 //       link = "https://github.com/";
 //       linkSelectInput.value = "";
 //       break;
-
 //     case "Instagram":
 //       linkSelectInput.placeholder = "@Username or link";
 //       link = "https://www.instagram.com/";
@@ -35,15 +33,14 @@ let linkSelectBtn = document.querySelector("#linkSelectBtn");
 //       link = "https://www.behance.net/";
 //       linkSelectInput.value = "";
 //       break;
-
 //     default:
 //       linkSelectInput.placeholder = "Link";
 //       link = "";
 //       break;
 //   }
 // });
-
-count = 1;
+let previouslyAdded = document.querySelectorAll(".link-id");
+let count = 1 + previouslyAdded.length;
 linkSelectBtn.addEventListener("click", () => {
   let inputValue = linkSelectInput.value;
   let selectValue = linkSelect.value;
@@ -72,16 +69,12 @@ linkSelectBtn.addEventListener("click", () => {
   let label = clone.querySelector("label");
   let input = clone.querySelector("input");
   let linkIdElement = clone.querySelector(".link-id");
-  // console.log(linkIdElement);
-  // let linkId = linkIdElement.classList;
-  // console.log(linkId);
+
   if (selectValue == "Other") {
     selectValue = "Link";
   }
-  label.textContent = selectValue ? selectValue + ":" : "Link";
-  // label.innerHTML = "Linkedin";
+  label.textContent = selectValue ? selectValue : "Link";
   label.setAttribute("for", `link-id-${id}`);
-  // console.log(linkSelectInput);
   input.setAttribute("name", `link-id-${id}`);
 
   linkIdElement.setAttribute("name", `link-id-sno-${count}`);
@@ -89,5 +82,19 @@ linkSelectBtn.addEventListener("click", () => {
 
   clone.querySelector("input").value = inputValue.replace(/\s+/g, "");
   linkAddDataContainer.appendChild(clone);
+
+  let alreadyAddedLinks = document.querySelectorAll(".link-id");
+  alreadyAddedLinks.forEach((element) => {
+    let addedLinkName =
+      element.parentElement.firstElementChild.textContent.trim();
+
+    // Loop through select options
+    for (let i = 0; i < linkSelect.options.length; i++) {
+      if (linkSelect.options[i].text.trim() === addedLinkName) {
+        linkSelect.remove(i);
+        break; // Exit after removing
+      }
+    }
+  });
   count++;
 });

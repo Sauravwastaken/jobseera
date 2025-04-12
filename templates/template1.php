@@ -9,14 +9,26 @@ include_once(__DIR__ . '/../parts/_dbconnect.php');
 
 $user_id = $_SESSION['user_id'];
 
-function fetchStepData($connect, $stepTable, $user_id, $column)
+function fetchStepData($connect, $stepTable, $user_id, $column, $condition = false)
 {
 
 
-    $sql = "SELECT * FROM `$stepTable` WHERE $column = ?";
+    if ($condition) {
+        $sql = "SELECT * FROM `$stepTable` WHERE $column = ? AND step4_entry_type = ?";
+
+    } else {
+        $sql = "SELECT * FROM `$stepTable` WHERE $column = ?";
+    }
 
     $stmt = mysqli_prepare($connect, $sql);
-    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    if ($condition) {
+        $conditionValue = "skill";
+        mysqli_stmt_bind_param($stmt, 'is', $user_id, $conditionValue);
+
+    } else {
+
+        mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    }
 
     if (!mysqli_stmt_execute($stmt)) {
         echo "Could not execute for $stepTable";
@@ -38,6 +50,7 @@ $step1_data = fetchStepData($connect, 'step1', $user_id, 'step1_user_id');
 $step2_data = fetchStepData($connect, 'step2', $user_id, 'step2_user_id');
 $step3_data = fetchStepData($connect, 'step3', $user_id, 'step3_user_id');
 $step4_abilities = fetchStepData($connect, 'step4_abilities', $user_id, 'step4_user_id');
+$step4_skills = fetchStepData($connect, 'step4_abilities', $user_id, 'step4_user_id', true);
 $step4_achievements = fetchStepData($connect, 'step4_achievements', $user_id, 'step4_user_id');
 
 // Example debug:
@@ -507,62 +520,64 @@ foreach ($step3_data as $key => $value) {
                         </td>
                     </tr>
                 </table>
-                <table class="w-full">
+            </table>
+
+            <table class="w-full" style="margin-left:20px;font-weight:bold;line-height:.9">
+
+                <?php
+
+                $i = 0;
+                foreach ($step4_skills as $index => $value):
+                    echo $index;
+                    ?>
 
                     <tr>
                         <?php
-                        foreach ($step4_abilities as $value):
+                        if (isset($step4_skills[$i]['step4_name'])) {
 
-                            if ($value['step4_entry_type'] == "skill"):
-                                $entryType = $value['step4_entry_type'];
+                            ?>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <?php echo $step4_skills[$i]['step4_name']; ?>
+                                    </li>
+                                </ul>
 
-                                // for
-                                ?>
+                            </td>
+                            <?php
+                        } else {
+                            break;
+                        }
+                        $i++; ?>
 
-                                <td>
-                                    <?php echo $value['step4_name'] ?>
-                                </td>
-                            <?php endif; endforeach; ?>
+                        <?php
+                        if (isset($step4_skills[$i]['step4_name'])) {
 
+                            ?>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <?php echo $step4_skills[$i]['step4_name']; ?>
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <?php
+                        } else {
+                            break;
+                        }
+                        $i++; ?>
                     </tr>
-                </table>
+
+                    <?php
+                endforeach; ?>
 
             </table>
 
 
 
-            <table class="no-page-break w-full " style="margin:2px 0">
-
-                <table class="w-full">
-
-                    <tr>
-                        <td>
-                            <a href="<?php echo $value['step3_details'][$entryType . 'Location'] ?>"
-                                class="sub-heading"><?php echo $value['step3_details'][$entryType . "Title"] ?></a>
-                        </td>
-                        <td style="text-align:right;">
-                            <p><?php echo $startMonth . " " . $startYear . " - " . $endMonth . " " . $endYear; ?></p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table>
-                    <tr>
-                        <td class="w-full" colspan="2">
-                            <ul>
-                                <li class="ml-4 text-base" style="line-height: .9;">
-                                    <?php echo $value['step3_description']; ?>
-                                </li>
-                            </ul>
-
-                        </td>
-
-                    </tr>
-                </table>
-            </table>
 
 
-            </table>
 
 
 

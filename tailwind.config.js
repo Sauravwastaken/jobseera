@@ -17,6 +17,17 @@ module.exports = {
         theme_border_gray: "#DFDFDF",
       },
     },
+    screens: {
+      "3xl": { max: "1700px" },
+      "2xl": { max: "1550px" },
+      xl: { max: "1279px" },
+
+      lg: { max: "1023px" },
+
+      md: { max: "767px" },
+
+      sm: { max: "639px" },
+    },
   },
   plugins: [],
 };

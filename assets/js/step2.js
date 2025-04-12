@@ -5,6 +5,7 @@ let count = 1 + previouslyAdded.length;
 higherEducationBtn.addEventListener("click", () => {
   let container = document.querySelector("#higherEducationContainer");
   let template = document.querySelector("#higherEducationTemplate");
+  let selectElement = document.querySelector("#qualificationType");
 
   let clone = document.importNode(template.content, true);
   let cloneData = [
@@ -45,5 +46,6 @@ higherEducationBtn.addEventListener("click", () => {
   });
 
   container.appendChild(clone);
+
   count++;
 });

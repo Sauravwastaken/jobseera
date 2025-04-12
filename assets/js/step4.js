@@ -4,9 +4,10 @@ let addLangBtn = document.querySelector("#addLangBtn");
 let addAccomplishBtn = document.querySelector("#addAccomplishBtn");
 let addCertificateBtn = document.querySelector("#addCertificateBtn");
 
-let previouslyAdded = document.querySelectorAll(".CvSummarySno");
+let previouslyAdded = document.querySelectorAll(".cvSummarySno");
 let count = 1 + previouslyAdded.length;
-// console.log(count);
+console.log(count);
+console.log(previouslyAdded.length);
 
 addSkillBtn.addEventListener("click", () => {
   makeClone("skill", "ability");

@@ -225,9 +225,9 @@ include_once('../components/nav.php');
 
                                 //   exit();
                                 ?>
-                                <?php echo '<br>';
-                                echo "coutn:";
-                                echo $i;
+                                <?php
+                                // echo "coutn:";
+                                // echo $i;
                                 ?>
                                 <input class="hidden workExperienceSno" name="workExperienceSno-<?php echo $i; ?>" type="text"
                                     value="<?php echo $i; ?>">
@@ -767,15 +767,12 @@ include_once('../components/nav.php');
 
                                 //   exit();
                                 ?>
-                                <?php echo '<br>';
-                                echo "coutn:";
-                                echo $i;
-                                ?>
+
 
                                 <input class="hidden workExperienceSno" name="workExperienceSno-<?php echo $i; ?>" type="text">
 
-                                <input class="workExperienceEntryType" name="workExperienceEntryType-<?php echo $i; ?>" type="text"
-                                    value="<?php echo $entryType; ?>">
+                                <input class="hidden workExperienceEntryType" name="workExperienceEntryType-<?php echo $i; ?>"
+                                    type="text" value="<?php echo $entryType; ?>">
                                 <input class="hidden workExperienceRowId" name="workExperienceRowId-<?php echo $i; ?>" type="text"
                                     value="<?php echo $rowId ?>">
                                 <!-- Row -->
@@ -1107,9 +1104,11 @@ include_once('../components/nav.php');
         <?php include_once('../components/resume_builder_submit.php'); ?>
     </section>
 </form>
+<?php
+include_once('../components/footer_scripts.php');
+?>
 <script src="../assets/js/step3.js"></script>
-
-
 <?php
 include_once('../components/footer.php');
+
 ?>

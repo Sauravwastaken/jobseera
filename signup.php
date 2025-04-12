@@ -1,21 +1,21 @@
 <?php
-    session_start();
-    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-        header('location: index.php');
-        exit();
-    } 
-    $title = 'Signup - JobSeera';
-    include_once('components/header.php');
+session_start();
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+    header('location: index.php');
+    exit();
+}
+$title = 'Signup - JobSeera';
+include_once('components/header.php');
 
-    $nav_included = true;
-    include_once('components/nav.php');
+$nav_included = true;
+include_once('components/nav.php');
 
-    include_once('parts/_google_config.php');
+include_once('parts/_google_config.php');
 
-    $client->addScope("email");
-    $client->addScope("profile");
+$client->addScope("email");
+$client->addScope("profile");
 
-    $url = $client->createAuthUrl();
+$url = $client->createAuthUrl();
 
 
 ?>
@@ -92,9 +92,12 @@
     </div>
 </section>
 
-<script src="assets/js/script.js"></script>
 
 <?php
+include_once('components/footer_scripts.php');
+?>
+<script src="assets/js/script.js"></script>
+<?php
 include_once('components/footer.php');
-  
+
 ?>

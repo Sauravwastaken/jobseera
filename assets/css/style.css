@@ -558,36 +558,6 @@ video {
   width: 100%;
 }
 
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 /* For Chrome, Safari, Edge, Opera */
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -605,6 +575,13 @@ input[type="number"] {
 .site-padding {
   padding-left: 16rem;
   padding-right: 16rem;
+}
+
+@media (max-width: 1700px) {
+  .site-padding {
+    padding-left: 13rem;
+    padding-right: 13rem;
+  }
 }
 
 .debug {
@@ -737,10 +714,6 @@ svg {
 
 .top-\[80px\] {
   top: 80px;
-}
-
-.-left-\[200px\] {
-  left: -200px;
 }
 
 .-z-10 {
@@ -879,6 +852,10 @@ svg {
   display: none;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-2 {
   height: 0.5rem;
 }
@@ -927,6 +904,10 @@ svg {
   height: 100%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .w-3\/5 {
   width: 60%;
 }
@@ -966,6 +947,10 @@ svg {
 
 .w-full {
   width: 100%;
+}
+
+.max-w-\[30\%\] {
+  max-width: 30%;
 }
 
 .flex-1 {
@@ -1141,11 +1126,6 @@ svg {
 .border-theme_gray {
   --tw-border-opacity: 1;
   border-color: rgb(238 240 240 / var(--tw-border-opacity, 1));
-}
-
-.\!bg-theme_gray {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(238 240 240 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .bg-\[\#50958C\] {
@@ -1499,4 +1479,16 @@ svg {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+@media (max-width: 1700px) {
+  .\33xl\:-left-\[350px\] {
+    left: -350px;
+  }
+}
+
+@media (max-width: 1550px) {
+  .\32xl\:-left-\[300px\] {
+    left: -300px;
+  }
 }

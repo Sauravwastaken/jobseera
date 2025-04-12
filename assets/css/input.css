@@ -14,7 +14,7 @@ input[type="number"] {
 }
 
 .site-padding {
-  @apply px-64;
+  @apply px-64 3xl:px-52;
 }
 .debug {
   @apply bg-red-500;

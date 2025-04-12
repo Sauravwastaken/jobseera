@@ -42,8 +42,11 @@ function nameValidate() {
 
 let signUpShowPassword = document.querySelector("#signUpShowPassword");
 let signUpHidePassword = document.querySelector("#signUpHidePassword");
+console.log(signUpShowPassword);
+console.log(signUpShowPassword);
 
 signUpShowPassword.addEventListener("click", () => {
+  console.log("function fired");
   let userPassword = document.querySelector("#user-password");
   if (userPassword.type == "text") {
     userPassword.type = "password";

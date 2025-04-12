@@ -30,8 +30,8 @@ include_once('components/nav.php');
             <a href="#" class="underline">Know more</a>
         </ul>
     </div>
-    <div class="bg-theme_green h-[800px] w-[600px] -z-10 absolute top-0 right-0">
-        <div class="absolute bottom-0 -left-[400px] w-[600px] h-[550px]">
+    <div class="bg-theme_green h-[800px] w-[600px] max-w-[30%] -z-10 absolute top-0 right-0">
+        <div class="absolute bottom-0 -left-[400px] w-[600px] h-[550px] 3xl:-left-[350px] 2xl:-left-[300px]">
             <img class="h-full w-full object-cover rounded-3xl" src="assets/images/hero.jpg" alt="" />
         </div>
     </div>
@@ -131,4 +131,8 @@ include_once('components/nav.php');
     </div>
 </section>
 
-<?php include_once('components/footer.php'); ?>
+<?php
+include_once('components/footer_scripts.php');
+include_once('components/footer.php');
+
+?>

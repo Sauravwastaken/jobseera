@@ -79,7 +79,7 @@ $url = $client->createAuthUrl();
             </form>
             <p class=" text-theme_dim_gray">
                 Don't have an account?
-                <a href="login.php" class="text-black">Sign up</a>
+                <a href="signup.php" class="text-black">Sign up</a>
             </p>
         </div>
     </div>
@@ -88,12 +88,10 @@ $url = $client->createAuthUrl();
         <img class="w-full h-full object-cover object-bottom" src="assets/images/login-hero.jpg" alt="login hero" />
     </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script>
-    feather.replace();
-</script>
+<?php
+include_once('components/footer_scripts.php');
+?>
 <script src="assets/js/script.js"></script>
-
 <?php
 include_once('components/footer.php');
 

@@ -372,8 +372,11 @@ if ($stmt) {
     </section>
 </form>
 
+<?php
+include_once('../components/footer_scripts.php');
+?>
 <script src="../assets/js/step2.js"></script>
-
 <?php
 include_once('../components/footer.php');
+
 ?>

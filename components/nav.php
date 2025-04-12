@@ -1,7 +1,8 @@
 <nav class="flex justify-between items-center site-padding py-10">
-    <div class="w-full">
-        <a href="#" class="font-semibold text-2xl">JobSeera</a>
-    </div>
+    <a href="<?php echo isset($is_sub_folder) ? '../' : '' ?>index.php" class="w-full flex items-center space-x-2">
+        <img class="w-12 h-12" src="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/images/logo.png" alt="logo">
+        <p class="font-semibold text-2xl">JobSeera</p>
+    </a>
     <ul class="flex space-x-4 w-full justify-center text-lg text-theme_dim_gray">
         <li>
             <a href="<?php echo isset($is_sub_folder) ? '../' : '' ?>index.php"
