@@ -21,12 +21,14 @@ module.exports = {
       "3xl": { max: "1700px" },
       "2xl": { max: "1550px" },
       xl: { max: "1279px" },
+      "2lg": { max: "1150px" },
 
       lg: { max: "1023px" },
 
       md: { max: "767px" },
 
       sm: { max: "639px" },
+      xs: { max: "450px" },
     },
   },
   plugins: [],

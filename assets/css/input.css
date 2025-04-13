@@ -14,13 +14,16 @@ input[type="number"] {
 }
 
 .site-padding {
-  @apply px-64 3xl:px-52;
+  @apply px-64 3xl:px-52 2xl:px-40 xl:px-32 2lg:px-24 lg:px-16 md:px-8 sm:px-6 xs:px-4;
 }
 .debug {
   @apply bg-red-500;
 }
 svg {
   @apply cursor-pointer;
+}
+.landing-card {
+  @apply bg-white w-[380px] flex items-center justify-center text-center flex-col  m-4 rounded-xl shadow-lg px-6 py-4;
 }
 .resume-form-input {
   @apply bg-theme_bg_light_yellow border border-theme_border_gray rounded px-2 h-10 font-semibold;

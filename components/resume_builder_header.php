@@ -1,4 +1,4 @@
-<h1 class="mx-auto w-fit text-5xl">Create a Resume</h1>
+<h1 class="mx-auto w-fit text-5xl text-center">Create a Resume</h1>
 <!-- Progress bar -->
 
 <div class="flex justify-between py-6 relative">

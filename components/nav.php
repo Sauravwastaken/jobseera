@@ -3,7 +3,7 @@
         <img class="w-12 h-12" src="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/images/logo.png" alt="logo">
         <p class="font-semibold text-2xl">JobSeera</p>
     </a>
-    <ul class="flex space-x-4 w-full justify-center text-lg text-theme_dim_gray">
+    <ul class="flex space-x-4 w-full justify-center text-lg text-theme_dim_gray lg:hidden">
         <li>
             <a href="<?php echo isset($is_sub_folder) ? '../' : '' ?>index.php"
                 class="hover:text-black transition-colors duration-200">
@@ -33,7 +33,7 @@
 
             ?>
             <a href="<?php echo isset($is_sub_folder) ? '../' : '' ?>parts/_logout.php"
-                class="<?php echo (isset($nav_included) && $nav_included) ? 'bg-theme_green text-white' : 'bg-white'; ?> px-4 py-2 rounded-lg">Log
+                class="<?php echo (isset($nav_included) && $nav_included) ? 'bg-theme_green text-white' : 'bg-white'; ?> px-4 py-2 rounded-lg lg:bg-theme_green text-white">Log
                 out</a>
         <?php } else { ?>
             <a href="login.php"

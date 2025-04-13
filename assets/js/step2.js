@@ -2,10 +2,11 @@ let higherEducationBtn = document.querySelector("#higherEducationBtn");
 let previouslyAdded = document.querySelectorAll(".qualificationType");
 let count = 1 + previouslyAdded.length;
 
+removeAlreadyAddedOptions();
+
 higherEducationBtn.addEventListener("click", () => {
   let container = document.querySelector("#higherEducationContainer");
   let template = document.querySelector("#higherEducationTemplate");
-  let selectElement = document.querySelector("#qualificationType");
 
   let clone = document.importNode(template.content, true);
   let cloneData = [
@@ -46,6 +47,24 @@ higherEducationBtn.addEventListener("click", () => {
   });
 
   container.appendChild(clone);
+  removeAlreadyAddedOptions();
 
   count++;
 });
+
+function removeAlreadyAddedOptions() {
+  let selectElement = document.querySelector("#qualificationType");
+  let alreadyAddedLinks = document.querySelectorAll(".qualificationType");
+  alreadyAddedLinks.forEach((element) => {
+    let addedLinkName = element.value;
+
+    // Loop through select options
+    for (let i = 0; i < selectElement.options.length; i++) {
+      if (selectElement.options[i].text.trim() === addedLinkName) {
+        console.log("found");
+        selectElement.remove(i);
+        break; // Exit after removing
+      }
+    }
+  });
+}

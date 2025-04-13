@@ -49,12 +49,12 @@ if ($stmt) {
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Personal Details</p>
 
                 <div class="space-y-6">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">First Name:</label>
                             <input class="resume-form-input" type="text" id="first-name" name="first-name"
@@ -68,7 +68,7 @@ if ($stmt) {
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="phone" class="resume-form-label">Phone No:</label>
                             <input class="resume-form-input" type="tel" id="phone" name="phone"
@@ -87,13 +87,13 @@ if ($stmt) {
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Location</p>
 
                 <div class="space-y-6">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
+                    <div class="flex w-full space-x-8 lg:flex-col lg:space-x-0 lg:space-y-6">
+                        <div class="flex flex-col flex-grow ">
                             <label for="location-state" class="resume-form-label">State:</label>
                             <input list="states" class="resume-form-input" type="text" id="location-state"
                                 name="location-state"
@@ -147,16 +147,16 @@ if ($stmt) {
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Links</p>
 
                 <div class="space-y-6" id="linkAddDataContainer">
                     <!-- Row -->
 
 
-                    <div class="flex w-full space-x-4">
+                    <div class="flex w-full space-x-4 md:flex-col md:space-x-0 md:space-y-6">
                         <div class="flex flex-col flex-grow-0">
-                            <select class="resume-form-input" name="link-select" id="link-select">
+                            <select class="resume-form-input md:w-fit" name="link-select" id="link-select">
                                 <option value="" selected>Select</option>
                                 <?php
                                 foreach ($linksArray as $links => $link) {
@@ -229,7 +229,7 @@ if ($stmt) {
                                 placeholder="Link" />
                         </div>
                         <div class="flex flex-col flex-grow-0">
-                            <a id="linkSelectBtn" class="bg-theme_green text-white px-4 py-2 rounded-lg">
+                            <a id="linkSelectBtn" class="bg-theme_green text-white px-4 py-2 rounded-lg md:w-fit">
                                 Add
                             </a>
                         </div>
