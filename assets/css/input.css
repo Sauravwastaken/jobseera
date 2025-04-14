@@ -46,7 +46,7 @@ svg {
   @apply w-3/5;
 }
 .single-input-row-xs {
-  @apply w-1/5;
+  @apply w-1/5 sm:w-3/5;
 }
 
 @tailwind utilities;

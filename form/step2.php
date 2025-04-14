@@ -65,12 +65,12 @@ if ($stmt) {
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Schooling</p>
 
                 <div class="space-y-6" id="qualificationContainer">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="" class="resume-form-label">Qualification:</label>
                             <input id="institutionName" class="resume-form-input" type="text" value="Class X"
@@ -91,7 +91,7 @@ if ($stmt) {
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="x-joining-date" class="resume-form-label">Year of Joining:</label>
                             <input id="joiningYear" class="resume-form-input" type="text" name="x-joining-date"
@@ -107,7 +107,7 @@ if ($stmt) {
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="" class="resume-form-label">Qualification:</label>
                             <input id="institutionName" class="resume-form-input" type="text" value="Class XII"
@@ -129,7 +129,7 @@ if ($stmt) {
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="xii-joining-date" class="resume-form-label">Year of Joining:</label>
                             <input id="joiningYear" class="resume-form-input" type="text" name="xii-joining-date"
@@ -157,13 +157,14 @@ if ($stmt) {
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Higher Education</p>
 
                 <div class="space-y-6" id="higherEducationContainer">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
-                        <div class="flex flex-col flex-grow">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
+
+                        <div class="flex flex-col flex-grow !-ml-0">
                             <label for="first-name" class="resume-form-label">Qualification:</label>
                             <select class="resume-form-input" name="" id="qualificationType">
                                 <option value="" selected readonly>Select</option>
@@ -202,7 +203,7 @@ if ($stmt) {
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Institution Name:</label>
                             <input class="resume-form-input" type="tel" id="higherEducationInstituteName" value="" />
@@ -267,7 +268,7 @@ if ($stmt) {
                             // echo '</pre>';
                             ?>
 
-                            <div class="flex w-full space-x-8">
+                            <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                 <div class="flex flex-col flex-grow">
                                     <label for="first-name" class="resume-form-label">Qualification:</label>
                                     <input class="resume-form-input qualificationType" type="text"
@@ -294,7 +295,7 @@ if ($stmt) {
                                         value="<?php echo isset($details['higherEducationCgpa']) ? $details['higherEducationCgpa'] : "" ?>">
                                 </div>
                             </div>
-                            <div class="flex w-full space-x-8">
+                            <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                 <div class="flex flex-col flex-grow">
                                     <label for="first-name" class="resume-form-label">Institution Name:</label>
                                     <input class="resume-form-input higherEducationInstituteName" type="tel" required=""
@@ -322,7 +323,7 @@ if ($stmt) {
                     <!-- Row -->
                     <template id="higherEducationTemplate">
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Qualification:</label>
                                 <input class="resume-form-input qualificationType" type="text" readonly />
@@ -345,7 +346,7 @@ if ($stmt) {
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Institution Name:</label>
                                 <input class="resume-form-input higherEducationInstituteName" type="tel" required />

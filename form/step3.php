@@ -19,7 +19,7 @@ include_once('../components/nav.php');
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Work Experience</p>
 
                 <div class="space-y-6" id="jobContainer">
@@ -28,7 +28,7 @@ include_once('../components/nav.php');
 
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex items-center space-x-2 flex-grow-0">
 
                             <input type="checkbox" name="" id="" />
@@ -37,7 +37,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Job Title / Role:</label>
                             <input id="jobTitle" class="resume-form-input" type="text" />
@@ -54,7 +54,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Employment Type:</label>
                             <select id="jobType" class="resume-form-input" name="" id="">
@@ -149,7 +149,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow-[0 single-input-row">
                             <label for="first-name" class="resume-form-label">Responsibilites:</label>
 
@@ -236,7 +236,7 @@ include_once('../components/nav.php');
                                 <input class="hidden workExperienceRowId" name="workExperienceRowId-<?php echo $i; ?>" type="text"
                                     value="<?php echo $rowId ?>">
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
 
                                     <div class="flex flex-col flex-grow">
 
@@ -260,7 +260,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                     <div class="flex flex-col flex-grow">
                                         <label for="first-name" class="resume-form-label">Employment Type:</label>
                                         <select class="resume-form-input jobType" name="jobType-<?php echo $i; ?>" id="">
@@ -403,7 +403,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                     <div class="flex flex-col flex-grow-[0 single-input-row">
                                         <label for="first-name" class="resume-form-label">Descritpion:</label>
 
@@ -429,7 +429,7 @@ include_once('../components/nav.php');
                         <input class="hidden workExperienceEntryType" name="workExperienceEntryType" type="text">
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
 
                             <div class="flex flex-col flex-grow">
 
@@ -448,7 +448,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Employment Type:</label>
                                 <select class="resume-form-input jobType" name="" id="">
@@ -544,7 +544,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col flex-grow-[0 single-input-row">
                                 <label for="first-name" class="resume-form-label">Descritpion:</label>
 
@@ -562,7 +562,7 @@ include_once('../components/nav.php');
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Projects</p>
 
                 <div class="space-y-6" id="projectContainer">
@@ -571,7 +571,7 @@ include_once('../components/nav.php');
 
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex items-center space-x-2 flex-grow-0">
 
                             <input type="checkbox" name="" id="" />
@@ -580,7 +580,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Project Name:</label>
                             <input id="projectTitle" class="resume-form-input" type="text" />
@@ -597,7 +597,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Project Type:</label>
                             <select id="projectType" class="resume-form-input" name="">
@@ -694,7 +694,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col flex-grow-[0 single-input-row">
                             <label for="first-name" class="resume-form-label">Responsibilites:</label>
 
@@ -776,7 +776,7 @@ include_once('../components/nav.php');
                                 <input class="hidden workExperienceRowId" name="workExperienceRowId-<?php echo $i; ?>" type="text"
                                     value="<?php echo $rowId ?>">
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
 
                                     <div class="flex flex-col flex-grow">
 
@@ -801,7 +801,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                     <div class="flex flex-col single-input-row-xs">
                                         <label for="first-name" class="resume-form-label">Project Type:</label>
                                         <select class="resume-form-input projectType" name="projectType-<?php echo $i; ?>">
@@ -943,7 +943,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                                     <div class="flex flex-col flex-grow-[0 single-input-row">
                                         <label for="first-name" class="resume-form-label">Descritpion:</label>
 
@@ -968,7 +968,7 @@ include_once('../components/nav.php');
                         <input class="workExperienceEntryType" name="workExperienceEntryType" type="text">
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
 
                             <div class="flex flex-col flex-grow">
 
@@ -987,7 +987,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col single-input-row-xs">
                                 <label for="first-name" class="resume-form-label">Project Type:</label>
                                 <select class="resume-form-input projectType" name="">
@@ -1083,7 +1083,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                             <div class="flex flex-col flex-grow-[0 single-input-row">
                                 <label for="first-name" class="resume-form-label">Descritpion:</label>
 

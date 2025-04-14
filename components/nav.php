@@ -37,9 +37,10 @@
                 out</a>
         <?php } else { ?>
             <a href="login.php"
-                class="<?php echo (isset($nav_included) && $nav_included) ? 'text-black' : 'text-white'; ?>">Log in</a>
+                class="<?php echo (isset($nav_included) && $nav_included) ? 'text-black' : 'text-white'; ?>lg:text-black">Log
+                in</a>
             <a href="signup.php"
-                class="<?php echo (isset($nav_included) && $nav_included) ? 'bg-theme_green text-white' : 'bg-white'; ?> px-4 py-2 rounded-lg">Sign
+                class="<?php echo (isset($nav_included) && $nav_included) ? 'bg-theme_green text-white' : 'bg-white'; ?> px-4 py-2 rounded-lg lg:bg-theme_green lg:text-white">Sign
                 up</a>
         <?php } ?>
     </ul>

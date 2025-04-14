@@ -17,7 +17,7 @@ include_once('../components/nav.php');
 
         <!-- Main form container -->
         <div class="border border-theme_border_gray py-4 rounded-lg">
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Skills</p>
 
                 <div class="space-y-6" id="skillContainer">
@@ -27,7 +27,7 @@ include_once('../components/nav.php');
 
 
                     <!-- Row -->
-                    <div class="flex w-full  space-x-4 items-end">
+                    <div class="flex w-full  gap-x-4 items-end xl:flex-wrap xl:gap-y-6">
 
                         <div class="flex flex-col w-5/12">
                             <label for="first-name" class="resume-form-label">Skills:</label>
@@ -144,7 +144,7 @@ include_once('../components/nav.php');
                         <input class="hidden cvSummarySno" type="text">
                         <input class="hidden cvSummaryEntryType" type="text" value="skill">
                         <!-- Row -->
-                        <div class="flex w-full  space-x-4 items-end">
+                        <div class="flex w-full  gap-x-4 items-end xl:flex-wrap xl:gap-y-6">
 
                             <div class="flex flex-col w-5/12">
                                 <label for="first-name" class="resume-form-label">Skills:</label>
@@ -171,13 +171,13 @@ include_once('../components/nav.php');
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Accomplishments</p>
 
                 <div class="space-y-6" id="accomplishContainer">
                     <input class="hidden" id="cvSummarySno" type="text">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Title / Achievement:</label>
                             <input id="accomplishName" class="resume-form-input" type="text" />
@@ -228,7 +228,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                         <div class="flex flex-col flex-grow-[0 single-input-row">
                             <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -293,7 +293,7 @@ include_once('../components/nav.php');
                                     value="<?php echo $rowId ?>">
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                                     <div class="flex flex-col flex-grow">
                                         <label for="first-name" class="resume-form-label">Title / Achievement:</label>
                                         <input class="resume-form-input accomplishName" type="text"
@@ -361,7 +361,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                                     <div class="flex flex-col flex-grow-[0 single-input-row">
                                         <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -384,7 +384,7 @@ include_once('../components/nav.php');
                         <input class="hidden cvSummaryEntryType" type="text" value="accomplish">
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Title / Achievement:</label>
                                 <input class="resume-form-input accomplishName" type="text" />
@@ -434,7 +434,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                             <div class="flex flex-col flex-grow-[0 single-input-row">
                                 <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -453,13 +453,13 @@ include_once('../components/nav.php');
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Certificates</p>
 
                 <div class="space-y-6" id="certificateContainer">
                     <input class="hidden" id="cvSummarySno" type="text">
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                         <div class="flex flex-col flex-grow">
                             <label for="first-name" class="resume-form-label">Certificate Name:</label>
                             <input id="certificateName" class="resume-form-input" type="text" />
@@ -509,7 +509,7 @@ include_once('../components/nav.php');
                     </div>
 
                     <!-- Row -->
-                    <div class="flex w-full space-x-8">
+                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                         <div class="flex flex-col flex-grow-[0 single-input-row">
                             <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -573,7 +573,7 @@ include_once('../components/nav.php');
                                     value="<?php echo $rowId ?>">
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                                     <div class="flex flex-col flex-grow">
                                         <label for="first-name" class="resume-form-label">Certificate Name:</label>
                                         <input class="resume-form-input certificateName" type="text"
@@ -641,7 +641,7 @@ include_once('../components/nav.php');
                                 </div>
 
                                 <!-- Row -->
-                                <div class="flex w-full space-x-8">
+                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                                     <div class="flex flex-col flex-grow-[0 single-input-row">
                                         <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -664,7 +664,7 @@ include_once('../components/nav.php');
                         <input class="hidden cvSummaryEntryType" type="text" value="certificate">
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                             <div class="flex flex-col flex-grow">
                                 <label for="first-name" class="resume-form-label">Certificate Name:</label>
                                 <input class="resume-form-input certificateName" type="text" />
@@ -713,7 +713,7 @@ include_once('../components/nav.php');
                         </div>
 
                         <!-- Row -->
-                        <div class="flex w-full space-x-8">
+                        <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
                             <div class="flex flex-col flex-grow-[0 single-input-row">
                                 <label for="first-name" class="resume-form-label"> Description:</label>
 
@@ -732,7 +732,7 @@ include_once('../components/nav.php');
                 <span class="resume-form-divider"></span>
             </div>
 
-            <div class="px-8">
+            <div class="px-8 md:px-6 sm:px-4">
                 <p class="my-4 text-lg">Language</p>
 
                 <div class="space-y-6" id="langContainer">
@@ -741,7 +741,7 @@ include_once('../components/nav.php');
 
 
                     <!-- Row -->
-                    <div class="flex w-full  space-x-4 items-end">
+                    <div class="flex w-full  gap-x-4 items-end xl:flex-wrap xl:gap-y-6">
 
                         <div class="flex flex-col w-5/12">
                             <label for="first-name" class="resume-form-label">Languauge:</label>
