@@ -1,4 +1,5 @@
 <?php
+
 include_once('../parts/_dbconnect.php');
 
 $title = 'Build Your Resume - JobSeera';
@@ -159,68 +160,71 @@ if ($stmt) {
                             <select class="resume-form-input md:w-fit" name="link-select" id="link-select">
                                 <option value="" selected>Select</option>
                                 <?php
-                                foreach ($linksArray as $links => $link) {
-                                    $alreadyAddedLinkIdArray[] = substr($links, -1);
-                                }
-
-                                for ($i = 0; $i < 7; $i++) {
-                                    switch ($i + 1) {
-                                        case 1:
-                                            $linkName = "Linkedin";
-                                            break;
-
-                                        case 2:
-                                            $linkName = "Github";
-                                            break;
-
-                                        case 3:
-                                            $linkName = "Portfolio";
-                                            break;
-
-                                        case 4:
-                                            $linkName = "Instagram";
-                                            break;
-
-                                        case 5:
-                                            $linkName = "LeetCode";
-                                            break;
-
-                                        case 6:
-                                            $linkName = "Behance";
-                                            break;
-
-                                        case 7:
-                                            $linkName = "Other";
-                                            break;
-
-                                        default:
-                                            $linkName = "Link";
-                                            break;
+                                if ($showResult) {
+                                    foreach ($linksArray as $links => $link) {
+                                        $alreadyAddedLinkIdArray[] = substr($links, -1);
                                     }
 
-                                    if (!in_array($i + 1, $alreadyAddedLinkIdArray)) {
+                                    for ($i = 0; $i < 7; $i++) {
+                                        switch ($i + 1) {
+                                            case 1:
+                                                $linkName = "Linkedin";
+                                                break;
+
+                                            case 2:
+                                                $linkName = "Github";
+                                                break;
+
+                                            case 3:
+                                                $linkName = "Portfolio";
+                                                break;
+
+                                            case 4:
+                                                $linkName = "Instagram";
+                                                break;
+
+                                            case 5:
+                                                $linkName = "LeetCode";
+                                                break;
+
+                                            case 6:
+                                                $linkName = "Behance";
+                                                break;
+
+                                            case 7:
+                                                $linkName = "Other";
+                                                break;
+
+                                            default:
+                                                $linkName = "Link";
+                                                break;
+                                        }
+
+                                        if (!in_array($i + 1, $alreadyAddedLinkIdArray)) {
 
 
 
 
-                                        ?>
-                                        <option id="select-option-<?php echo $i + 1; ?>" value="<?php echo $linkName; ?>"
-                                            class="link-id-<?php echo $i + 1; ?>">
-                                            <?php echo $linkName; ?>
-                                        </option>
-                                        <?php
+                                            ?>
+                                            <option id="select-option-<?php echo $i + 1; ?>" value="<?php echo $linkName; ?>"
+                                                class="link-id-<?php echo $i + 1; ?>">
+                                                <?php echo $linkName; ?>
+                                            </option>
+                                            <?php
+                                        }
                                     }
-                                }
-                                ?>
+                                } else {
+                                    ?>
 
 
-                                <!-- <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
-                                <option id="select-option-2" value="Github" class="link-id-2">Github</option>
-                                <option id="select-option-3" value="Portfolio" class="link-id-3">Portfolio</option>
-                                <option id="select-option-4" value="Instagram" class="link-id-4">Instagram</option>
-                                <option id="select-option-5" value="LeetCode" class="link-id-5">LeetCode</option>
-                                <option id="select-option-6" value="Behance" class="link-id-6">Behance</option>
-                                <option id="select-option-7" value="Other" class="link-id-7">Other</option> -->
+                                    <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
+                                    <option id="select-option-2" value="Github" class="link-id-2">Github</option>
+                                    <option id="select-option-3" value="Portfolio" class="link-id-3">Portfolio</option>
+                                    <option id="select-option-4" value="Instagram" class="link-id-4">Instagram</option>
+                                    <option id="select-option-5" value="LeetCode" class="link-id-5">LeetCode</option>
+                                    <option id="select-option-6" value="Behance" class="link-id-6">Behance</option>
+                                    <option id="select-option-7" value="Other" class="link-id-7">Other</option>
+                                <?php } ?>
                             </select>
 
                         </div>

@@ -14,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <title><?php echo isset($title) ? $title : 'JobSeera'; ?></title>
     <link rel="stylesheet" href="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/css/style.css" />
 
-    <link rel="shortcut icon" href="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/images/logo.png"
+    <link rel="shortcut icon" href="<?php echo isset($is_sub_folder) ? '../' : '' ?>assets/images/logo.webp"
         type="image/x-icon">
 
     <!-- Google Fonts -->

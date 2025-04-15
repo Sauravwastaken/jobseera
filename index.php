@@ -33,7 +33,7 @@ include_once('components/nav.php');
     <div class="bg-theme_green h-[800px] w-[600px] max-w-[30%] -z-10 absolute top-0 right-0 lg:hidden">
         <div
             class="absolute bottom-0 -left-[400px] w-[600px] h-[550px] 3xl:-left-[350px] 2xl:-left-[300px] xl:w-[550px] xl:h-[550px] xl:-left-[300px] 2lg:w-[500px] 2lg:h-[550px] 2lg:-left-[250px]">
-            <img class="h-full w-full object-cover rounded-3xl" src="assets/images/hero.jpg" alt="" />
+            <img class="h-full w-full object-cover rounded-3xl" src="assets/images/hero.webp" alt="" />
         </div>
     </div>
 </section>

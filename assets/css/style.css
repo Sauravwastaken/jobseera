@@ -1564,10 +1564,6 @@ svg {
     left: -300px;
   }
 
-  .\32xl\:w-8\/12 {
-    width: 66.666667%;
-  }
-
   .\32xl\:w-9\/12 {
     width: 75%;
   }
@@ -1653,14 +1649,14 @@ svg {
     padding-bottom: 3rem;
   }
 
-  .lg\:text-white {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-  }
-
   .lg\:text-black {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  }
+
+  .lg\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
   }
 }
 
@@ -1674,8 +1670,8 @@ svg {
     display: none;
   }
 
-  .\32md\:w-full {
-    width: 100%;
+  .\32md\:h-auto {
+    height: auto;
   }
 
   .\32md\:w-fit {
@@ -1683,17 +1679,8 @@ svg {
     width: fit-content;
   }
 
-  .\32md\:basis-auto {
-    flex-basis: auto;
-  }
-
   .\32md\:basis-full {
     flex-basis: 100%;
-  }
-
-  .\32md\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   .\32md\:px-12 {
@@ -1703,6 +1690,10 @@ svg {
 }
 
 @media (max-width: 767px) {
+  .md\:h-auto {
+    height: auto;
+  }
+
   .md\:w-fit {
     width: -moz-fit-content;
     width: fit-content;

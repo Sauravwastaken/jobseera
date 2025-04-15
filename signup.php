@@ -20,7 +20,7 @@ $url = $client->createAuthUrl();
 
 ?>
 
-<section class="site-padding flex justify-between py-20 h-[80vh]">
+<section class="site-padding flex justify-between py-20 h-[80vh] 2md:h-auto">
     <div class="flex flex-col items-center justify-center basis-1/2 2md:basis-full">
         <div class="w-7/12 flex justify-center flex-col text-center 2xl:w-9/12 xl:11/12 ">
             <h1 class="text-4xl font-medium">Create an Account</h1>
@@ -37,9 +37,7 @@ $url = $client->createAuthUrl();
             <form id="SignupForm" class="loginSignupForm" action="parts/_signup_handle.php" method="post">
                 <a href="<?php echo $url; ?>"
                     class="flex items-center justify-center border-2 border-theme_gray p-2 rounded-lg space-x-2 my-4 2md:w-fit 2md:mx-auto 2md:px-12 sm:px-6">
-                    <img class="w-6 h-6"
-                        src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-                        alt="google logo" />
+                    <img class="w-6 h-6" src="assets/images/google.webp" alt="google logo" />
                     <p class="text-sm">Sign up with google</p>
                 </a>
 
@@ -88,7 +86,7 @@ $url = $client->createAuthUrl();
     </div>
     <!-- Image Container -->
     <div class="basis-1/2 2md:hidden">
-        <img class="w-full h-full object-cover" src="assets/images/signup-hero.jpg" alt="signup hero" />
+        <img class="w-full h-full object-cover" src="assets/images/signup-hero.webp" alt="signup hero" />
     </div>
 </section>
 
