@@ -759,7 +759,7 @@ foreach ($step3_data as $key => $value) {
                     if (!$isHeadingPrinted):
 
                         ?>
-                        <table class="no-page-break">
+                        <table class="no-page-break w-full">
 
                             <table class="w-full" style="margin-top: 2px;">
 
