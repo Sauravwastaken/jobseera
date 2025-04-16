@@ -194,7 +194,8 @@ include_once('../components/nav.php');
                                 <select id="accomplishMonth" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
                                     id="">
 
-                                    <option value="01" selected>January</option>
+                                    <option value="" selected readonly disabled>Month</option>
+                                    <option value="01">January</option>
                                     <option value="02">February</option>
                                     <option value="03">March</option>
                                     <option value="04">April</option>
@@ -209,17 +210,18 @@ include_once('../components/nav.php');
                                 </select>
                                 <select id="accomplishYear" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
                                     id="">
+                                    <option value="" selected readonly disabled>Year</option>
                                     <?php
                                     $startYear = 1925;
                                     $currentYear = date("Y");
 
                                     for ($year = $currentYear + 1; $year >= $startYear; $year--) {
-                                        if ($year == $currentYear) {
-                                            echo "<option value=\"$year\" selected>$year</option>";
-                                        } else {
-                                            echo "<option value=\"$year\">$year</option>";
-                                        }
-
+                                        // if ($year == $currentYear) {
+                                        //     echo "<option value=\"$year\" selected>$year</option>";
+                                        // } else {
+                                        echo "<option value=\"$year\">$year</option>";
+                                        // }
+                                    
                                     }
                                     ?>
                                 </select>
@@ -475,7 +477,8 @@ include_once('../components/nav.php');
                                 <select id="certificateMonth" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
                                     id="">
 
-                                    <option value="01" selected>January</option>
+                                    <option value="" selected readonly disabled>Month</option>
+                                    <option value="01">January</option>
                                     <option value="02">February</option>
                                     <option value="03">March</option>
                                     <option value="04">April</option>
@@ -490,17 +493,18 @@ include_once('../components/nav.php');
                                 </select>
                                 <select id="certificateYear" class="flex-grow px-2 bg-theme_bg_light_yellow" name=""
                                     id="">
+                                    <option value="" selected readonly disabled>Year</option>
                                     <?php
                                     $startYear = 1925;
                                     $currentYear = date("Y");
 
                                     for ($year = $currentYear + 1; $year >= $startYear; $year--) {
-                                        if ($year == $currentYear) {
-                                            echo "<option value=\"$year\" selected>$year</option>";
-                                        } else {
-                                            echo "<option value=\"$year\">$year</option>";
-                                        }
-
+                                        // if ($year == $currentYear) {
+                                        //     echo "<option value=\"$year\" selected>$year</option>";
+                                        // } else {
+                                        echo "<option value=\"$year\">$year</option>";
+                                        // }
+                                    
                                     }
                                     ?>
                                 </select>
@@ -566,92 +570,92 @@ include_once('../components/nav.php');
                                 ?>
 
 
-                                <input class="hidden cvSummarySno" type="text" name="cvSummarySno-<?php echo $i; ?>">
-                                <input class="hidden cvSummaryEntryType" type="text" value="certificate"
-                                    name="cvSummaryEntryType-<?php echo $i; ?>">
-                                <input class="hidden cvSummaryRowId" name="cvSummaryRowId-<?php echo $i; ?>" type="text"
-                                    value="<?php echo $rowId ?>">
+                                            <input class="hidden cvSummarySno" type="text" name="cvSummarySno-<?php echo $i; ?>">
+                                            <input class="hidden cvSummaryEntryType" type="text" value="certificate"
+                                                name="cvSummaryEntryType-<?php echo $i; ?>">
+                                            <input class="hidden cvSummaryRowId" name="cvSummaryRowId-<?php echo $i; ?>" type="text"
+                                                value="<?php echo $rowId ?>">
 
-                                <!-- Row -->
-                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
-                                    <div class="flex flex-col flex-grow">
-                                        <label for="first-name" class="resume-form-label">Certificate Name:</label>
-                                        <input class="resume-form-input certificateName" type="text"
-                                            name="certificateName-<?php echo $i; ?>" value="<?php echo $details['name']; ?>">
-                                    </div>
-                                    <div class="flex flex-col flex-grow">
-                                        <label for="first-name" class="resume-form-label">Issuer:</label>
+                                            <!-- Row -->
+                                            <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
+                                                <div class="flex flex-col flex-grow">
+                                                    <label for="first-name" class="resume-form-label">Certificate Name:</label>
+                                                    <input class="resume-form-input certificateName" type="text"
+                                                        name="certificateName-<?php echo $i; ?>" value="<?php echo $details['name']; ?>">
+                                                </div>
+                                                <div class="flex flex-col flex-grow">
+                                                    <label for="first-name" class="resume-form-label">Issuer:</label>
 
-                                        <input class="resume-form-input certificateProvider" type="text"
-                                            name="certificateProvider-<?php echo $i; ?>"
-                                            value="<?php echo $details['provider']; ?>">
-                                    </div>
-                                    <div class="flex flex-col flex-grow-[2]">
-                                        <label for="first-name" class="resume-form-label">Date / Year:</label>
-                                        <div class="flex resume-form-input px-0">
-                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow certificateMonth"
-                                                name="certificateMonth-<?php echo $i; ?>">
+                                                    <input class="resume-form-input certificateProvider" type="text"
+                                                        name="certificateProvider-<?php echo $i; ?>"
+                                                        value="<?php echo $details['provider']; ?>">
+                                                </div>
+                                                <div class="flex flex-col flex-grow-[2]">
+                                                    <label for="first-name" class="resume-form-label">Date / Year:</label>
+                                                    <div class="flex resume-form-input px-0">
+                                                        <select class="flex-grow px-2 bg-theme_bg_light_yellow certificateMonth"
+                                                            name="certificateMonth-<?php echo $i; ?>">
 
-                                                <?php
-                                                $months = [
-                                                    "01" => "January",
-                                                    "02" => "February",
-                                                    "03" => "March",
-                                                    "04" => "April",
-                                                    "05" => "May",
-                                                    "06" => "June",
-                                                    "07" => "July",
-                                                    "08" => "August",
-                                                    "09" => "September",
-                                                    "10" => "October",
-                                                    "11" => "November",
-                                                    "12" => "December"
-                                                ];
-                                                foreach ($months as $value => $name) {
-                                                    if ($value == $month) {
-                                                        $selected = 'selected';
-                                                    } else {
-                                                        $selected = '';
+                                                            <?php
+                                                            $months = [
+                                                                "01" => "January",
+                                                                "02" => "February",
+                                                                "03" => "March",
+                                                                "04" => "April",
+                                                                "05" => "May",
+                                                                "06" => "June",
+                                                                "07" => "July",
+                                                                "08" => "August",
+                                                                "09" => "September",
+                                                                "10" => "October",
+                                                                "11" => "November",
+                                                                "12" => "December"
+                                                            ];
+                                                            foreach ($months as $value => $name) {
+                                                                if ($value == $month) {
+                                                                    $selected = 'selected';
+                                                                } else {
+                                                                    $selected = '';
 
-                                                    }
-                                                    echo "<option value='$value' $selected>$name</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                            <select class="flex-grow px-2 bg-theme_bg_light_yellow certificateYear"
-                                                name="certificateYear-<?php echo $i; ?>">
-                                                <?php
-                                                $startYear = 1925;
-                                                $currentYear = date("Y");
+                                                                }
+                                                                echo "<option value='$value' $selected>$name</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <select class="flex-grow px-2 bg-theme_bg_light_yellow certificateYear"
+                                                            name="certificateYear-<?php echo $i; ?>">
+                                                            <?php
+                                                            $startYear = 1925;
+                                                            $currentYear = date("Y");
 
-                                                for ($increment = $currentYear + 1; $increment >= $startYear; $increment--) {
-                                                    if ($increment == $year) {
-                                                        $selected = 'selected';
-                                                    } else {
-                                                        $selected = '';
+                                                            for ($increment = $currentYear + 1; $increment >= $startYear; $increment--) {
+                                                                if ($increment == $year) {
+                                                                    $selected = 'selected';
+                                                                } else {
+                                                                    $selected = '';
 
-                                                    }
-                                                    echo "<option value=\"$increment\" $selected>$increment</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
+                                                                }
+                                                                echo "<option value=\"$increment\" $selected>$increment</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
 
-                                    </div>
-                                </div>
+                                                </div>
+                                            </div>
 
-                                <!-- Row -->
-                                <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
-                                    <div class="flex flex-col flex-grow-[0 single-input-row">
-                                        <label for="first-name" class="resume-form-label"> Description:</label>
+                                            <!-- Row -->
+                                            <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6 ">
+                                                <div class="flex flex-col flex-grow-[0 single-input-row">
+                                                    <label for="first-name" class="resume-form-label"> Description:</label>
 
-                                        <input class="resume-form-input certificateDesc" type="text"
-                                            name="certificateDesc-<?php echo $i; ?>" value="<?php echo $details['description']; ?>">
-                                    </div>
-                                </div>
+                                                    <input class="resume-form-input certificateDesc" type="text"
+                                                        name="certificateDesc-<?php echo $i; ?>" value="<?php echo $details['description']; ?>">
+                                                </div>
+                                            </div>
 
-                                <?php
-                                $i++;
+                                            <?php
+                                            $i++;
                             }
                         }
                     } else {
@@ -798,51 +802,51 @@ include_once('../components/nav.php');
 
                                 ?>
 
-                                <input class="hidden cvSummarySno" type="text" name="cvSummarySno-<?php echo $i; ?>">
-                                <input class="hidden cvSummaryEntryType" type="text" value="lang"
-                                    name="cvSummaryEntryType-<?php echo $i; ?>">
-                                <input class="hidden cvSummaryRowId" name="cvSummaryRowId-<?php echo $i; ?>" type="text"
-                                    value="<?php echo $rowId ?>">
-                                <!-- Row -->
-                                <div class="flex w-full  space-x-4 items-end">
+                                            <input class="hidden cvSummarySno" type="text" name="cvSummarySno-<?php echo $i; ?>">
+                                            <input class="hidden cvSummaryEntryType" type="text" value="lang"
+                                                name="cvSummaryEntryType-<?php echo $i; ?>">
+                                            <input class="hidden cvSummaryRowId" name="cvSummaryRowId-<?php echo $i; ?>" type="text"
+                                                value="<?php echo $rowId ?>">
+                                            <!-- Row -->
+                                            <div class="flex w-full  space-x-4 items-end">
 
-                                    <div class="flex flex-col w-5/12">
-                                        <label for="first-name" class="resume-form-label">Language:</label>
-                                        <input class="resume-form-input langName" type="text" name="langName-<?php echo $i; ?>"
-                                            value="<?php echo $name; ?>">
-                                    </div>
-                                    <div class="flex flex-col flex-grow-0">
-                                        <label for="first-name" class="resume-form-label">Profiency:</label>
-                                        <select class="resume-form-input langLevel" name="langLevel-<?php echo $i; ?>">
+                                                <div class="flex flex-col w-5/12">
+                                                    <label for="first-name" class="resume-form-label">Language:</label>
+                                                    <input class="resume-form-input langName" type="text" name="langName-<?php echo $i; ?>"
+                                                        value="<?php echo $name; ?>">
+                                                </div>
+                                                <div class="flex flex-col flex-grow-0">
+                                                    <label for="first-name" class="resume-form-label">Profiency:</label>
+                                                    <select class="resume-form-input langLevel" name="langLevel-<?php echo $i; ?>">
+                                                        <?php
+                                                        // $level
+                                                        $level_types = [
+                                                            "Beginner",
+                                                            "Intermediate",
+                                                            "Proficient",
+                                                            "Advanced",
+                                                            "Expert",
+                                                        ];
+
+                                                        foreach ($level_types as $types) {
+                                                            if ($types == $level) {
+                                                                $selected = 'selected';
+                                                            } else {
+                                                                $selected = '';
+
+                                                            }
+                                                            echo "<option value='$types' $selected>$types</option>";
+                                                        }
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
                                             <?php
-                                            // $level
-                                            $level_types = [
-                                                "Beginner",
-                                                "Intermediate",
-                                                "Proficient",
-                                                "Advanced",
-                                                "Expert",
-                                            ];
-
-                                            foreach ($level_types as $types) {
-                                                if ($types == $level) {
-                                                    $selected = 'selected';
-                                                } else {
-                                                    $selected = '';
-
-                                                }
-                                                echo "<option value='$types' $selected>$types</option>";
-                                            }
-
-                                            ?>
-
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                                <?php
-                                $i++;
+                                            $i++;
                             }
                         }
                     } else {

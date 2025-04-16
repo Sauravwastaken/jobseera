@@ -98,7 +98,8 @@ if ($stmt) {
                             <label for="location-state" class="resume-form-label">State:</label>
                             <input list="states" class="resume-form-input" type="text" id="location-state"
                                 name="location-state"
-                                value="<?php echo isset($locationArray['state']) ? $locationArray['state'] : '' ?>" />
+                                value="<?php echo isset($locationArray['state']) ? $locationArray['state'] : '' ?>"
+                                required />
                             <datalist id="states">
                                 <option value="Andhra Pradesh"></option>
                                 <option value="Arunachal Pradesh"></option>
@@ -133,7 +134,8 @@ if ($stmt) {
                         <div class="flex flex-col flex-grow">
                             <label for="location-city" class="resume-form-label">City:</label>
                             <input class="resume-form-input" type="text" id="location-city" name="location-city"
-                                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : ''; ?>" />
+                                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : ''; ?>"
+                                required />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="location-area" class="resume-form-label">Area / Locality:</label>

@@ -80,13 +80,15 @@ if ($stmt) {
                             <label for="x-school-name" class="resume-form-label">School Name:</label>
 
                             <input id="institutionName" class="resume-form-input" type="text" name="x-school-name"
-                                value="<?php echo isset($class_x['school_name']) ? $class_x['school_name'] : ""; ?>" />
+                                value="<?php echo isset($class_x['school_name']) ? $class_x['school_name'] : ""; ?>"
+                                required />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="x-percentage" class="resume-form-label">Percentage:</label>
                             <input id="percentage" class="resume-form-input" type="number" step="0.01"
                                 name="x-percentage"
-                                value="<?php echo isset($class_x['percentage']) ? $class_x['percentage'] : ""; ?>" />
+                                value="<?php echo isset($class_x['percentage']) ? $class_x['percentage'] : ""; ?>"
+                                required />
                         </div>
                     </div>
 
@@ -117,14 +119,16 @@ if ($stmt) {
                             <label for="xii-school-name" class="resume-form-label">School Name:</label>
 
                             <input id="institutionName" class="resume-form-input" type="text" name="xii-school-name"
-                                value="<?php echo isset($class_xii['school_name']) ? $class_xii['school_name'] : "" ?>" />
+                                value="<?php echo isset($class_xii['school_name']) ? $class_xii['school_name'] : "" ?>"
+                                required />
                         </div>
                         <div class="flex flex-col flex-grow">
                             <label for="xii-percentage" class="resume-form-label">Percentage:</label>
 
                             <input id="percentage" class="resume-form-input" type="number" step="0.01"
                                 name="xii-percentage"
-                                value="<?php echo isset($class_xii['percentage']) ? $class_xii['percentage'] : "" ?>" />
+                                value="<?php echo isset($class_xii['percentage']) ? $class_xii['percentage'] : "" ?>"
+                                required />
                         </div>
                     </div>
 

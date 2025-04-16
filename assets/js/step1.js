@@ -97,4 +97,5 @@ linkSelectBtn.addEventListener("click", () => {
     }
   });
   count++;
+  linkSelectInput.value = "";
 });

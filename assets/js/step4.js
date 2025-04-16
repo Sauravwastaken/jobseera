@@ -63,6 +63,9 @@ function makeClone(entry_type, table_type) {
     // }
     cloneElement.value = userValue;
     cloneElement.name = element + `-${count}`;
+
+    // Clearing values after submitting data
+    userElement.value = "";
   });
 
   container.appendChild(clone);

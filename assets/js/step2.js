@@ -44,6 +44,9 @@ higherEducationBtn.addEventListener("click", () => {
     } else {
       cloneElement.name = element + `-${id}`;
     }
+
+    // Clearing value after submitting data
+    userElement.value = "";
   });
 
   container.appendChild(clone);

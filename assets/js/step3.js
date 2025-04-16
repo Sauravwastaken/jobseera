@@ -36,10 +36,10 @@ function makeClone(entry_type) {
     let userValue = userElement.value ? userElement.value : "";
 
     let cloneElement = clone.querySelector(`.${element}`);
-    console.log("User element: ");
-    console.log(userElement);
-    console.log("Clone element: ");
-    console.log(cloneElement);
+    // console.log("User element: ");
+    // console.log(userElement);
+    // console.log("Clone element: ");
+    // console.log(cloneElement);
 
     if (cloneElement.classList.contains("workExperienceEntryType")) {
       cloneElement.value = entry_type;
@@ -50,6 +50,8 @@ function makeClone(entry_type) {
     }
 
     cloneElement.name = element + `-${count}`;
+    // Clearing value after submitting data
+    userElement.value = "";
   });
 
   container.appendChild(clone);
