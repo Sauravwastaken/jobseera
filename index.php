@@ -7,16 +7,16 @@ include_once('components/nav.php');
 
 ?>
 
-<section class="site-padding h-[680px]">
-    <div class="flex flex-col justify-center h-full space-y-6 lg:h-auto lg:py-12">
-        <h1 class="text-6xl leading-snug xl:text-5xl xl:leading-snug">
-            Unlock Your <br />Career with <br />the Right Key
+<section class="site-padding h-[680px] lg:flex lg:flex-col-reverse lg:h-auto lg:py-12">
+    <div class="flex flex-col justify-center h-full space-y-6 lg:h-auto lg:py-12 lg:text-center">
+        <h1 class="text-6xl leading-snug xl:text-5xl xl:leading-snug  md:text-4xl sm:text-3xl ">
+            Unlock Your <br class="lg:hidden"/>Career with <br  />the Right Key
         </h1>
         <p class="text-lg text-theme_dim_gray">
             Your next big opportunity is just one <br />
             powerful resume away—make it count
         </p>
-        <ul class="flex items-center space-x-6">
+        <ul class="flex items-center space-x-6 lg:justify-center">
             <?php
 
             if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
@@ -30,10 +30,10 @@ include_once('components/nav.php');
             <a href="#" class="underline">Know more</a>
         </ul>
     </div>
-    <div class="bg-theme_green h-[800px] w-[600px] max-w-[30%] -z-10 absolute top-0 right-0 lg:hidden">
+    <div class="bg-theme_green h-[800px] w-[600px] max-w-[30%] -z-10 absolute top-0 right-0 lg:relative lg:flex lg:justify-center lg:max-w-full lg:h-full lg:w-full lg:bg-theme_bg_light_yellow  ">
         <div
-            class="absolute bottom-0 -left-[400px] w-[600px] h-[550px] 3xl:-left-[350px] 2xl:-left-[300px] xl:w-[550px] xl:h-[550px] xl:-left-[300px] 2lg:w-[500px] 2lg:h-[550px] 2lg:-left-[250px]">
-            <img class="h-full w-full object-cover rounded-3xl" src="assets/images/hero.webp" alt="" />
+            class="absolute bottom-0 -left-[400px] w-[600px] h-[550px] 3xl:-left-[350px] 2xl:-left-[300px] xl:w-[550px] xl:h-[550px] xl:-left-[300px] 2lg:w-[500px] 2lg:h-[550px] 2lg:-left-[250px] lg:relative lg:left-0  sm:h-[350px] xs:h[300px]">
+            <img class="h-full w-full object-cover rounded-3xl  " src="assets/images/hero.webp" alt="" />
         </div>
     </div>
 </section>
@@ -128,6 +128,48 @@ if (isset($nothing)) {
         </div>
     </section>
 <?php } ?>
+<section class="site-padding py-32 flex justify-between w-full lg:flex-col lg:py-8 ">
+    <div class="flex  flex-col flex-1 ">
+        <img class="w-1/2 shadow-sm shadow-theme_dim_gray lg:mx-auto 2md:w-3/5 sm:w-4/5 xs:w-11/12" src="assets/images/resume.jpg" alt="resume">
+    </div>
+    <div class="flex  flex-col flex-1 justify-around lg:justify-center lg:text-center lg:space-y-8">
+        <div class="lg:py-10">
+
+            <h2 class="text-4xl leading-snug md:text-3xl sm:2xl xs:xl">Resume builder designed to maximize ATS score and visibility</h2>
+            <p class="text-lg my-4 text-theme_dim_gray">Smart suggestions and powerful formatting built into every step.</p>
+            <a href="form/step1.php" class="flex items-center lg:justify-center ">
+                <p >
+
+                    Create your resume now
+                </p>
+                <i class="w-4 h-4" data-feather="chevron-right"></i>
+            </a>
+        </div>
+
+        <div>
+            <ul class="flex gap-x-8 text-center lg:justify-center sm:flex-col sm:gap-y-8 ">
+                <li class="leading-[2.5]">
+                    <p class="text-2xl ">97+</p>
+                    <p class="text-theme_dim_gray">ATS Score</p>
+                </li>
+                <li class="relative">  
+                    <p class="absolute w-[2px] h-full bg-theme_gray top-0 sm:w-1/5 sm:-translate-x-1/2 sm:left-1/2 sm:h-[2px]"></p>
+                </li>
+                <li class="leading-[2.5]">
+                    <p class="text-2xl ">3x</p>
+                    <p class="text-theme_dim_gray">Job opportunities</p>
+                </li>
+                <li class="relative">  
+                    <p class="absolute w-[2px] h-full bg-theme_gray top-0 sm:w-1/5 sm:-translate-x-1/2 sm:left-1/2 sm:h-[2px]"></p>
+                </li>
+                <li class="leading-[2.5]">
+                    <p class="text-2xl ">&lt; 5 min</p>
+                    <p class="text-theme_dim_gray">Resume ready</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 <?php
 include_once('components/footer_scripts.php');
