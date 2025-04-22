@@ -247,7 +247,7 @@ if ($stmt) {
                         <div class="flex w-full space-x-0">
                             <div class="flex flex-col single-input-row-lg space-y-2">
                                 <label class="resume-form-label"></label>
-                                <input class="resume-form-input" type="text" value="" />
+                                <input class="resume-form-input" type="text" value="" required/>
                                 <input class="hidden link-id" type="text">
                             </div>
                         </div>

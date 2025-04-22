@@ -137,7 +137,14 @@ if (isset($nothing)) {
 
             <h2 class="text-4xl leading-snug md:text-3xl sm:2xl xs:xl">Resume builder designed to maximize ATS score and visibility</h2>
             <p class="text-lg my-4 text-theme_dim_gray">Smart suggestions and powerful formatting built into every step.</p>
-            <a href="form/step1.php" class="flex items-center lg:justify-center bg-theme_orange text-white px-4 py-2 rounded-lg w-fit lg:mx-auto">
+<?php 
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) { 
+$href = 'form/step1.php'; 
+} else { 
+$href= 'signup.php';
+}
+?>
+            <a href="<?php echo $href; ?>" class="flex items-center lg:justify-center bg-theme_orange text-white px-4 py-2 rounded-lg w-fit lg:mx-auto">
                 <p class="">
 
                     Create your resume now

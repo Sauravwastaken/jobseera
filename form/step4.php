@@ -148,11 +148,11 @@ include_once('../components/nav.php');
 
                             <div class="flex flex-col w-5/12">
                                 <label for="first-name" class="resume-form-label">Skills:</label>
-                                <input class="resume-form-input skillName" type="text" />
+                                <input class="resume-form-input skillName" type="text" required/>
                             </div>
                             <div class="flex flex-col flex-grow-0">
                                 <label for="first-name" class="resume-form-label">Profiency:</label>
-                                <select class="resume-form-input skillLevel" name="">
+                                <select class="resume-form-input skillLevel" name="" required>
                                     <option value="Beginner">Beginner</option>
                                     <option value="Intermediate">Intermediate</option>
                                     <option value="Proficient">Proficient</option>
@@ -862,11 +862,11 @@ include_once('../components/nav.php');
 
                             <div class="flex flex-col w-5/12">
                                 <label for="first-name" class="resume-form-label">Languuage:</label>
-                                <input class="resume-form-input langName" type="text" />
+                                <input class="resume-form-input langName" type="text" required/>
                             </div>
                             <div class="flex flex-col flex-grow-0">
                                 <label for="first-name" class="resume-form-label">Profiency:</label>
-                                <select class="resume-form-input langLevel" name="">
+                                <select class="resume-form-input langLevel" name="" required>
                                     <option value="Beginner">Beginner</option>
                                     <option value="Intermediate">Intermediate</option>
                                     <option value="Proficient">Proficient</option>
