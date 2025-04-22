@@ -62,7 +62,7 @@ $step4_achievements = fetchStepData($connect, 'step4_achievements', $user_id, 's
 // var_dump($step4_achievements);
 // echo "</pre>";
 
-$name = $step1_data[0]['first_name'] . " " . $step1_data[0]['last_name'];
+$fullName = $step1_data[0]['first_name'] . " " . $step1_data[0]['last_name'];
 $address = json_decode($step1_data[0]['location'], true);
 $address = $address['area'] . ", " . $address['city'] . ", " . $address['state'];
 $phone = $step1_data[0]['phone'];
@@ -119,7 +119,7 @@ foreach ($step3_data as $key => $value) {
         <div>
 
             <div>
-                <p class="heading"><?php echo $name; ?> </p>
+                <p class="heading"><?php echo $fullName; ?> </p>
 
 
 
@@ -229,7 +229,6 @@ foreach ($step3_data as $key => $value) {
 
                                 </tr>
                             </table>
-
                             <table>
                                 <tr>
                                     <td class="w-full" colspan="2">
@@ -249,26 +248,35 @@ foreach ($step3_data as $key => $value) {
                         <?php
                         $isHeadingPrinted = true;
                     else: ?>
-                        <table class="no-page-break w-full " style="margin:2px 0">
+                        <table class="no-page-break w-full">
+
 
                             <table class="w-full">
 
                                 <tr>
                                     <td>
-                                        <a href="<?php echo $value['step3_details'][$entryType . 'Location'] ?>"
-                                            class="sub-heading"><?php echo $value['step3_details'][$entryType . "Title"] ?></a>
+                                        <p class="sub-heading"><?php echo $value['step3_details']["companyName"] ?></p>
                                     </td>
                                     <td style="text-align:right;">
                                         <p><?php echo $startMonth . " " . $startYear . " - " . $endMonth . " " . $endYear; ?></p>
                                     </td>
                                 </tr>
                             </table>
+                            <table>
+                                <tr>
+                                    <td style="line-height: .6;">
+                                        <p class="text-base">
+                                            <?php echo $value['step3_details'][$entryType . 'Title']; ?>
+                                        </p>
+                                    </td>
 
+                                </tr>
+                            </table>
                             <table>
                                 <tr>
                                     <td class="w-full" colspan="2">
                                         <ul>
-                                            <li class="ml-4 text-base" style="line-height: .9;">
+                                            <li class="ml-4 text-base" style="line-height: .8;">
                                                 <?php echo $value['step3_description']; ?>
                                             </li>
                                         </ul>
@@ -583,8 +591,6 @@ foreach ($step3_data as $key => $value) {
 
 
         </div>
-
-
 
         <!-- Accomplishments Details -->
         <div>

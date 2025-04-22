@@ -22,10 +22,12 @@ $html = ob_get_clean();
 // echo $html;
 // exit;
 
+$filename = preg_replace('/[^A-Za-z0-9_\-]/', '_', $fullName) ?: 'document';
+
 $dompdf->loadHtml($html);
 
 // Paper size and orientation
 $dompdf->setPaper('A4', 'portrait');
 
 $dompdf->render();
-$dompdf->stream("document.pdf", ["Attachment" => false]);
+$dompdf->stream($filename . ".pdf", ["Attachment" => false]);
