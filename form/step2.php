@@ -59,7 +59,7 @@ if ($stmt) {
 
 ?>
 
-<form action="../parts/_step2_handle.php" method="POST">
+<form id="step2Form" action="../parts/_step2_handle.php" method="POST">
     <section class="site-padding py-8">
         <?php include_once('../components/resume_builder_header.php'); ?>
 
@@ -71,21 +71,21 @@ if ($stmt) {
                 <div class="space-y-6" id="qualificationContainer">
                     <!-- Row -->
                     <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                        <div class="flex flex-col flex-grow">
+                        <div class="flex flex-col basis-0 flex-grow">
                             <label for="" class="resume-form-label">Qualification:</label>
-                            <input id="institutionName" class="resume-form-input" type="text" value="Class X"
-                                disabled />
+                            <input class="resume-form-input" type="text" value="Class X" disabled />
                         </div>
-                        <div class="flex flex-col flex-grow-[2]">
+                        <div class="flex flex-col basis-0 flex-grow-[2]">
                             <label for="x-school-name" class="resume-form-label">School Name:</label>
 
-                            <input id="institutionName" class="resume-form-input" type="text" name="x-school-name"
+                            <input id="institutionNameX" class="resume-form-input institution-name" type="text"
+                                name="x-school-name"
                                 value="<?php echo isset($class_x['school_name']) ? $class_x['school_name'] : ""; ?>"
                                 required />
                         </div>
-                        <div class="flex flex-col flex-grow">
+                        <div class="flex flex-col basis-0 flex-grow">
                             <label for="x-percentage" class="resume-form-label">Percentage:</label>
-                            <input id="percentage" class="resume-form-input" type="number" step="0.01"
+                            <input id="percentageX" class="resume-form-input percentage" type="number" step="0.01"
                                 name="x-percentage"
                                 value="<?php echo isset($class_x['percentage']) ? $class_x['percentage'] : ""; ?>"
                                 required />
@@ -96,13 +96,13 @@ if ($stmt) {
                     <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="x-joining-date" class="resume-form-label">Year of Joining:</label>
-                            <input id="joiningYear" class="resume-form-input" type="text" name="x-joining-date"
+                            <input id="joiningYearX" class="resume-form-input year" type="text" name="x-joining-date"
                                 value="<?php echo isset($class_x['joining_date']) ? $class_x['joining_date'] : "" ?>"
                                 required />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="x-passing-date" class="resume-form-label">Year of Passing:</label>
-                            <input id="leavingYear" class="resume-form-input" type="text" name="x-passing-date"
+                            <input id="leavingYearX" class="resume-form-input year" type="text" name="x-passing-date"
                                 value="<?php echo isset($class_x['passing_date']) ? $class_x['passing_date'] : "" ?>"
                                 required />
                         </div>
@@ -110,22 +110,22 @@ if ($stmt) {
 
                     <!-- Row -->
                     <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                        <div class="flex flex-col flex-grow">
+                        <div class="flex flex-col basis-0 flex-grow">
                             <label for="" class="resume-form-label">Qualification:</label>
-                            <input id="institutionName" class="resume-form-input" type="text" value="Class XII"
-                                disabled />
+                            <input class="resume-form-input" type="text" value="Class XII" disabled />
                         </div>
-                        <div class="flex flex-col flex-grow-[2]">
+                        <div class="flex flex-col basis-0 flex-grow-[2]">
                             <label for="xii-school-name" class="resume-form-label">School Name:</label>
 
-                            <input id="institutionName" class="resume-form-input" type="text" name="xii-school-name"
+                            <input id="institutionNameXii" class="resume-form-input institution-name" type="text"
+                                name="xii-school-name"
                                 value="<?php echo isset($class_xii['school_name']) ? $class_xii['school_name'] : "" ?>"
                                 required />
                         </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="xii-percentage" class="resume-form-label">Percentage:</label>
+                        <div class="flex flex-col basis-0 flex-grow">
+                            <label for="xii-percentage" class="resume-form-label ">Percentage:</label>
 
-                            <input id="percentage" class="resume-form-input" type="number" step="0.01"
+                            <input id="percentageXii" class="resume-form-input percentage" type="number" step="0.01"
                                 name="xii-percentage"
                                 value="<?php echo isset($class_xii['percentage']) ? $class_xii['percentage'] : "" ?>"
                                 required />
@@ -136,13 +136,15 @@ if ($stmt) {
                     <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
                         <div class="flex flex-col single-input-row-xs">
                             <label for="xii-joining-date" class="resume-form-label">Year of Joining:</label>
-                            <input id="joiningYear" class="resume-form-input" type="text" name="xii-joining-date"
+                            <input id="joiningYearXii" class="resume-form-input year" type="text"
+                                name="xii-joining-date"
                                 value="<?php echo isset($class_xii['joining_date']) ? $class_xii['joining_date'] : ""; ?>"
                                 required />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="xii-passing-date" class="resume-form-label">Year of Passing:</label>
-                            <input id="leavingYear" class="resume-form-input" type="text" name="xii-passing-date"
+                            <input id="leavingYearXii" class="resume-form-input year" type="text"
+                                name="xii-passing-date"
                                 value="<?php echo isset($class_xii['passing_date']) ? $class_xii['passing_date'] : "" ?>"
                                 required />
                         </div>
@@ -166,9 +168,9 @@ if ($stmt) {
 
                 <div class="space-y-6" id="higherEducationContainer">
                     <!-- Row -->
-                    <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
+                    <div class="flex w-full gap-x-8 2xl:flex-wrap 2xl:gap-y-6">
 
-                        <div class="flex flex-col flex-grow !-ml-0">
+                        <div class="flex flex-col basis-0 flex-grow !-ml-0">
                             <label for="first-name" class="resume-form-label">Qualification:</label>
                             <select class="resume-form-input" name="" id="qualificationType">
                                 <option value="" selected readonly>Select</option>
@@ -189,45 +191,50 @@ if ($stmt) {
                                 </option>
                             </select>
                         </div>
-                        <div class="flex flex-col flex-grow-[2]">
+                        <div class="flex flex-col basis-0 flex-grow-[2]">
                             <label for="first-name" class="resume-form-label">Course Name:</label>
 
-                            <input class="resume-form-input" type="text" id="courseName" value="" />
+                            <input class="resume-form-input course-name" type="text" id="courseName" value="" />
                         </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">Branch:</label>
+                        <div class="flex flex-col basis-0 flex-grow">
+                            <label for="first-name" class="resume-form-label name">Branch:</label>
 
-                            <input class="resume-form-input" id="branchName" type="text" value="" />
+                            <input class="resume-form-input branch-name" id="branchName" type="text" value="" />
                         </div>
-                        <div class="flex flex-col flex-grow">
+                        <div class="flex flex-col basis-0 flex-grow">
                             <label for="first-name" class="resume-form-label">CGPA:</label>
 
-                            <input class="resume-form-input" type="text" id="higherEducationCgpa" />
+                            <input class="resume-form-input cgpa" type="text" id="higherEducationCgpa" />
                         </div>
                     </div>
 
                     <!-- Row -->
                     <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                        <div class="flex flex-col flex-grow">
+                        <div class="flex flex-col basis-0 flex-grow">
                             <label for="first-name" class="resume-form-label">Institution Name:</label>
-                            <input class="resume-form-input" type="tel" id="higherEducationInstituteName" value="" />
+                            <input class="resume-form-input institution-name" type="tel"
+                                id="higherEducationInstituteName" value="" />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Year of Joining:</label>
-                            <input class="resume-form-input" type="tel" id="higherEducationJoiningDate" value="" />
+                            <input class="resume-form-input year" type="tel" id="higherEducationJoiningDate" value="" />
                         </div>
                         <div class="flex flex-col single-input-row-xs">
                             <label for="first-name" class="resume-form-label">Year of Passing:</label>
-                            <input class="resume-form-input" type="text" id="higherEducationPassingDate" value="" />
+                            <input class="resume-form-input year" type="text" id="higherEducationPassingDate"
+                                value="" />
                         </div>
                     </div>
 
                     <!-- Row -->
+
                     <div class="flex">
                         <a id="higherEducationBtn" class="bg-theme_green text-white px-4 py-2 rounded-lg">
                             Add
                         </a>
                     </div>
+                    <p id="higherEducationSubmitError" class="text-red-500  mt-2 hidden">Please fill the details with
+                        correct data</p>
 
                     <!-- Added Data -->
                     <?php
@@ -273,48 +280,50 @@ if ($stmt) {
                             ?>
 
                             <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                                <div class="flex flex-col flex-grow">
+                                <div class="flex flex-col basis-0 flex-grow">
                                     <label for="first-name" class="resume-form-label">Qualification:</label>
                                     <input class="resume-form-input qualificationType" type="text"
                                         value="<?php echo isset($qualification_type) ? $qualification_type : "" ?>"
                                         name="qualificationType<?php echo $sno ?>" readonly>
                                 </div>
-                                <div class="flex flex-col flex-grow-[2]">
+                                <div class="flex flex-col basis-0 flex-grow-[2]">
                                     <label for="first-name" class="resume-form-label">Course Name:</label>
 
-                                    <input class="resume-form-input courseName" type="text" name="courseName-<?php echo $id; ?>"
+                                    <input class="resume-form-input courseName course-name" type="text"
+                                        name="courseName-<?php echo $id; ?>"
                                         value="<?php echo isset($details['courseName']) ? $details['courseName'] : "" ?>">
                                 </div>
-                                <div class="flex flex-col flex-grow">
+                                <div class="flex flex-col basis-0 flex-grow">
                                     <label for="first-name" class="resume-form-label">Branch:</label>
 
-                                    <input class="resume-form-input branchName" type="text" name="branchName-<?php echo $id; ?>"
+                                    <input class="resume-form-input branchName branch-name" type="text"
+                                        name="branchName-<?php echo $id; ?>"
                                         value="<?php echo isset($details['branchName']) ? $details['branchName'] : "" ?>">
                                 </div>
-                                <div class="flex flex-col flex-grow">
+                                <div class="flex flex-col basis-0 flex-grow">
                                     <label for="first-name" class="resume-form-label">CGPA:</label>
 
-                                    <input class="resume-form-input higherEducationCgpa" type="text"
+                                    <input class="resume-form-input higherEducationCgpa cgpa" type="text"
                                         name="higherEducationCgpa-<?php echo $id; ?>"
                                         value="<?php echo isset($details['higherEducationCgpa']) ? $details['higherEducationCgpa'] : "" ?>">
                                 </div>
                             </div>
                             <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                                <div class="flex flex-col flex-grow">
+                                <div class="flex flex-col basis-0 flex-grow">
                                     <label for="first-name" class="resume-form-label">Institution Name:</label>
-                                    <input class="resume-form-input higherEducationInstituteName" type="tel" required=""
-                                        name="higherEducationInstituteName-<?php echo $id; ?>"
+                                    <input class="resume-form-input higherEducationInstituteName institution-name" type="tel"
+                                        required="" name="higherEducationInstituteName-<?php echo $id; ?>"
                                         value="<?php echo isset($details['higherEducationInstituteName']) ? $details['higherEducationInstituteName'] : "" ?>">
                                 </div>
                                 <div class="flex flex-col single-input-row-xs">
                                     <label for="first-name" class="resume-form-label">Year of Joining:</label>
-                                    <input class="resume-form-input higherEducationJoiningDate" type="tel" required=""
+                                    <input class="resume-form-input higherEducationJoiningDate year" type="tel" required=""
                                         name="higherEducationJoiningDate-<?php echo $id; ?>"
                                         value="<?php echo isset($details['higherEducationJoiningDate']) ? $details['higherEducationJoiningDate'] : "" ?>">
                                 </div>
                                 <div class="flex flex-col single-input-row-xs">
                                     <label for="first-name" class="resume-form-label">Year of Passing:</label>
-                                    <input class="resume-form-input higherEducationPassingDate" type="text" required=""
+                                    <input class="resume-form-input higherEducationPassingDate year" type="text" required=""
                                         name="higherEducationPassingDate-<?php echo $id; ?>"
                                         value="<?php echo isset($details['higherEducationPassingDate']) ? $details['higherEducationPassingDate'] : "" ?>">
                                 </div>
@@ -328,36 +337,37 @@ if ($stmt) {
                     <template id="higherEducationTemplate">
                         <!-- Row -->
                         <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                            <div class="flex flex-col flex-grow">
+                            <div class="flex flex-col basis-0 flex-grow">
                                 <label for="first-name" class="resume-form-label">Qualification:</label>
                                 <input class="resume-form-input qualificationType" type="text" readonly />
                             </div>
-                            <div class="flex flex-col flex-grow-[2]">
+                            <div class="flex flex-col basis-0 flex-grow-[2]">
                                 <label for="first-name" class="resume-form-label">Course Name:</label>
 
-                                <input class="resume-form-input courseName" type="text" />
+                                <input class="resume-form-input courseName course-name" type="text" />
                             </div>
-                            <div class="flex flex-col flex-grow">
+                            <div class="flex flex-col basis-0 flex-grow">
                                 <label for="first-name" class="resume-form-label">Branch:</label>
 
-                                <input class="resume-form-input branchName" type="text" />
+                                <input class="resume-form-input branchName branch-name" type="text" />
                             </div>
-                            <div class="flex flex-col flex-grow">
+                            <div class="flex flex-col basis-0 flex-grow">
                                 <label for="first-name" class="resume-form-label">CGPA:</label>
 
-                                <input class="resume-form-input higherEducationCgpa" type="text" />
+                                <input class="resume-form-input higherEducationCgpa cgpa" type="text" />
                             </div>
                         </div>
 
                         <!-- Row -->
                         <div class="flex w-full gap-x-8 xl:flex-wrap xl:gap-y-6">
-                            <div class="flex flex-col flex-grow">
+                            <div class="flex flex-col basis-0 flex-grow">
                                 <label for="first-name" class="resume-form-label">Institution Name:</label>
-                                <input class="resume-form-input higherEducationInstituteName" type="tel" required />
+                                <input class="resume-form-input higherEducationInstituteName institution-name"
+                                    type="tel" required />
                             </div>
                             <div class="flex flex-col single-input-row-xs">
                                 <label for="first-name" class="resume-form-label">Year of Joining:</label>
-                                <input class="resume-form-input higherEducationJoiningDate" type="tel" required />
+                                <input class="resume-form-input higherEducationJoiningDate year" type="tel" required />
                             </div>
                             <div class="flex flex-col single-input-row-xs">
                                 <label for="first-name" class="resume-form-label">Year of Passing:</label>

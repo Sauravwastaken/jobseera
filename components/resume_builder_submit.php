@@ -1,3 +1,6 @@
+<div>
+    <p id="formSubmitError" class="text-red-500 mx-auto w-fit mt-2 hidden">Please fill the form with correct details</p>
+</div>
 <div class="flex justify-center items-center py-6 space-x-2">
 
 

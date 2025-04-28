@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./*.php", "./**/*.php"],
-  safelist: ["w-3/5"],
+  safelist: ["w-3/5 mt-1"],
   theme: {
     extend: {
       fontFamily: {

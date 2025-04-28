@@ -50,11 +50,14 @@ if ($method == "POST") {
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
                 //   Do noting for now
+                echo "updating";
                 // ! 
 
                 updateSchoolDetails($connect, $row, $school_details_x, 'step2_school_x_details', 'step2');
                 updateSchoolDetails($connect, $row, $school_details_xii, 'step2_school_xii_details', 'step2');
                 updateSchoolDetails($connect, $row, $higher_education_details, 'step2_higher_education_details', 'step2');
+                echo "updated";
+
 
                 // ! 
                 header('location: ../form/step3.php');

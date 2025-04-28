@@ -44,278 +44,317 @@ if ($stmt) {
 
 ?>
 
-<form action="../parts/_step<?php echo $form_step; ?>_handle.php" method="POST">
-    <section class="site-padding py-8">
-        <?php include_once('../components/resume_builder_header.php'); ?>
+<form
+  id="step1Form"
+  action="../parts/_step<?php echo $form_step; ?>_handle.php"
+  method="POST"
+>
+  <section class="site-padding py-8">
+    <?php include_once('../components/resume_builder_header.php'); ?>
 
-        <!-- Main form container -->
-        <div class="border border-theme_border_gray py-4 rounded-lg">
-            <div class="px-8 md:px-6 sm:px-4">
-                <p class="my-4 text-lg">Personal Details</p>
+    <!-- Main form container -->
+    <div class="border border-theme_border_gray py-4 rounded-lg">
+      <div class="px-8 md:px-6 sm:px-4">
+        <p class="my-4 text-lg">Personal Details</p>
 
-                <div class="space-y-6">
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6">
-                        <div class="flex flex-col flex-grow">
-                            <label for="first-name" class="resume-form-label">First Name:</label>
-                            <input class="resume-form-input" type="text" id="first-name" name="first-name"
-                                value="<?php echo isset($first_name) ? $first_name : '' ?>" required />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="last-name" class="resume-form-label">Last Name:</label>
-                            <input class="resume-form-input" type="text" id="last-name" name="last-name"
-                                value="<?php echo isset($last_name) ? $last_name : '' ?>" />
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6">
-                        <div class="flex flex-col flex-grow">
-                            <label for="phone" class="resume-form-label">Phone No:</label>
-                            <input class="resume-form-input" type="tel" id="phone" name="phone"
-                                value="<?php echo isset($phone) ? $phone : '' ?>" required />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="email" class="resume-form-label">Email Id:</label>
-                            <input class="resume-form-input" type="email" id="email" name="email"
-                                value="<?php echo isset($email) ? $email : '' ?>" required />
-                        </div>
-                    </div>
-                </div>
+        <div class="space-y-6">
+          <!-- Row -->
+          <div
+            class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6"
+          >
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="first-name" class="resume-form-label"
+                >First Name: *</label
+              >
+              <input
+                class="resume-form-input"
+                type="text"
+                id="first-name"
+                name="first-name"
+                value="<?php echo isset($first_name) ? $first_name : '' ?>"
+                required
+              />
             </div>
-
-            <div class="relative my-6 h-2">
-                <span class="resume-form-divider"></span>
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="last-name" class="resume-form-label"
+                >Last Name:</label
+              >
+              <input
+                class="resume-form-input"
+                type="text"
+                id="last-name"
+                name="last-name"
+                value="<?php echo isset($last_name) ? $last_name : '' ?>"
+              />
             </div>
+          </div>
 
-            <div class="px-8 md:px-6 sm:px-4">
-                <p class="my-4 text-lg">Location</p>
-
-                <div class="space-y-6">
-                    <!-- Row -->
-                    <div class="flex w-full space-x-8 lg:flex-col lg:space-x-0 lg:space-y-6">
-                        <div class="flex flex-col flex-grow ">
-                            <label for="location-state" class="resume-form-label">State:</label>
-                            <input list="states" class="resume-form-input" type="text" id="location-state"
-                                name="location-state"
-                                value="<?php echo isset($locationArray['state']) ? $locationArray['state'] : '' ?>"
-                                required />
-                            <datalist id="states">
-                                <option value="Andhra Pradesh"></option>
-                                <option value="Arunachal Pradesh"></option>
-                                <option value="Assam"></option>
-                                <option value="Bihar"></option>
-                                <option value="Chhattisgarh"></option>
-                                <option value="Goa"></option>
-                                <option value="Gujarat"></option>
-                                <option value="Haryana"></option>
-                                <option value="Himachal Pradesh"></option>
-                                <option value="Jharkhand"></option>
-                                <option value="Karnataka"></option>
-                                <option value="Kerala"></option>
-                                <option value="Madhya Pradesh"></option>
-                                <option value="Maharashtra"></option>
-                                <option value="Manipur"></option>
-                                <option value="Meghalaya"></option>
-                                <option value="Mizoram"></option>
-                                <option value="Nagaland"></option>
-                                <option value="Odisha"></option>
-                                <option value="Punjab"></option>
-                                <option value="Rajasthan"></option>
-                                <option value="Sikkim"></option>
-                                <option value="Tamil Nadu"></option>
-                                <option value="Telangana"></option>
-                                <option value="Tripura"></option>
-                                <option value="Uttar Pradesh"></option>
-                                <option value="Uttarakhand"></option>
-                                <option value="West Bengal"></option>
-                            </datalist>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="location-city" class="resume-form-label">City:</label>
-                            <input class="resume-form-input" type="text" id="location-city" name="location-city"
-                                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : ''; ?>"
-                                required />
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <label for="location-area" class="resume-form-label">Area / Locality:</label>
-                            <input class="resume-form-input" type="text" id="location-area" name="location-area"
-                                value="<?php echo isset($locationArray['area']) ? $locationArray['area'] : '' ?> " />
-                        </div>
-                    </div>
-                </div>
+          <!-- Row -->
+          <div
+            class="flex w-full space-x-8 md:flex-col md:space-x-0 md:space-y-6"
+          >
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="phone" class="resume-form-label">Phone No:</label>
+              <input
+                class="resume-form-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                value="<?php echo isset($phone) ? $phone : '' ?>"
+                required
+              />
             </div>
-
-            <div class="relative my-6 h-2">
-                <span class="resume-form-divider"></span>
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="email" class="resume-form-label">Email Id:</label>
+              <input
+                class="resume-form-input"
+                type="email"
+                id="email"
+                name="email"
+                value="<?php echo isset($email) ? $email : '' ?>"
+                required
+              />
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="px-8 md:px-6 sm:px-4">
-                <p class="my-4 text-lg">Links</p>
+      <div class="relative my-6 h-2">
+        <span class="resume-form-divider"></span>
+      </div>
 
-                <div class="space-y-6" id="linkAddDataContainer">
-                    <!-- Row -->
+      <div class="px-8 md:px-6 sm:px-4">
+        <p class="my-4 text-lg">Location</p>
 
+        <div class="space-y-6">
+          <!-- Row -->
+          <div
+            class="flex w-full space-x-8 lg:flex-col lg:space-x-0 lg:space-y-6"
+          >
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="location-state" class="resume-form-label"
+                >State:</label
+              >
+              <input
+                list="states"
+                class="resume-form-input"
+                type="text"
+                id="location-state"
+                name="location-state"
+                value="<?php echo isset($locationArray['state']) ? $locationArray['state'] : '' ?>"
+                required
+              />
+              <datalist id="states">
+                <option value="Andhra Pradesh"></option>
+                <option value="Arunachal Pradesh"></option>
+                <option value="Assam"></option>
+                <option value="Bihar"></option>
+                <option value="Chhattisgarh"></option>
+                <option value="Goa"></option>
+                <option value="Gujarat"></option>
+                <option value="Haryana"></option>
+                <option value="Himachal Pradesh"></option>
+                <option value="Jharkhand"></option>
+                <option value="Karnataka"></option>
+                <option value="Kerala"></option>
+                <option value="Madhya Pradesh"></option>
+                <option value="Maharashtra"></option>
+                <option value="Manipur"></option>
+                <option value="Meghalaya"></option>
+                <option value="Mizoram"></option>
+                <option value="Nagaland"></option>
+                <option value="Odisha"></option>
+                <option value="Punjab"></option>
+                <option value="Rajasthan"></option>
+                <option value="Sikkim"></option>
+                <option value="Tamil Nadu"></option>
+                <option value="Telangana"></option>
+                <option value="Tripura"></option>
+                <option value="Uttar Pradesh"></option>
+                <option value="Uttarakhand"></option>
+                <option value="West Bengal"></option>
+              </datalist>
+            </div>
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="location-city" class="resume-form-label">City:</label>
+              <input
+                class="resume-form-input"
+                type="text"
+                id="location-city"
+                name="location-city"
+                value="<?php echo isset($locationArray['city']) ? $locationArray['city'] : ''; ?>"
+                required
+              />
+            </div>
+            <div class="flex flex-col flex-grow basis-0">
+              <label for="location-area" class="resume-form-label"
+                >Area / Locality:</label
+              >
+              <input
+                class="resume-form-input"
+                type="text"
+                id="location-area"
+                name="location-area"
+                value="<?php echo isset($locationArray['area']) ? $locationArray['area'] : '' ?> "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
-                    <div class="flex w-full space-x-4 md:flex-col md:space-x-0 md:space-y-6">
-                        <div class="flex flex-col flex-grow-0">
-                            <select class="resume-form-input md:w-fit" name="link-select" id="link-select">
-                                <option value="" selected>Select</option>
-                                <?php
+      <div class="relative my-6 h-2">
+        <span class="resume-form-divider"></span>
+      </div>
+
+      <div class="px-8 md:px-6 sm:px-4">
+        <p class="my-4 text-lg">Links</p>
+
+        <div class="space-y-6" id="linkAddDataContainer">
+          <!-- Row -->
+
+          <div
+            class="flex w-full space-x-4 md:flex-col md:space-x-0 md:space-y-6"
+          >
+            <div class="flex flex-col flex-grow-0">
+              <select
+                class="resume-form-input md:w-fit"
+                name="link-select"
+                id="link-select"
+              >
+                <option value="" selected>Select</option>
+                <?php
                                 if ($showResult) {
-                                    foreach ($linksArray as $links => $link) {
-                                        $alreadyAddedLinkIdArray[] = substr($links, -1);
-                                    }
-
-                                    for ($i = 0; $i < 7; $i++) {
-                                        switch ($i + 1) {
-                                            case 1:
-                                                $linkName = "Linkedin";
-                                                break;
-
-                                            case 2:
-                                                $linkName = "Github";
-                                                break;
-
-                                            case 3:
-                                                $linkName = "Portfolio";
-                                                break;
-
-                                            case 4:
-                                                $linkName = "Instagram";
-                                                break;
-
-                                            case 5:
-                                                $linkName = "LeetCode";
-                                                break;
-
-                                            case 6:
-                                                $linkName = "Behance";
-                                                break;
-
-                                            case 7:
-                                                $linkName = "Other";
-                                                break;
-
-                                            default:
-                                                $linkName = "Link";
-                                                break;
-                                        }
-
-                                        if (!in_array($i + 1, $alreadyAddedLinkIdArray)) {
-
-
-
-
-                                            ?>
-                                            <option id="select-option-<?php echo $i + 1; ?>" value="<?php echo $linkName; ?>"
-                                                class="link-id-<?php echo $i + 1; ?>">
-                                                <?php echo $linkName; ?>
-                                            </option>
-                                            <?php
+                                    foreach ($linksArray as $links =>
+                $link) { $alreadyAddedLinkIdArray[] = substr($links, -1); } for
+                ($i = 0; $i < 7; $i++) { switch ($i + 1) { case 1: $linkName =
+                "Linkedin"; break; case 2: $linkName = "Github"; break; case 3:
+                $linkName = "Portfolio"; break; case 4: $linkName = "Instagram";
+                break; case 5: $linkName = "LeetCode"; break; case 6: $linkName
+                = "Behance"; break; case 7: $linkName = "Other"; break; default:
+                $linkName = "Link"; break; } if (!in_array($i + 1,
+                $alreadyAddedLinkIdArray)) { ?>
+                <option
+                  id="select-option-<?php echo $i + 1; ?>"
+                  value="<?php echo $linkName; ?>"
+                  class="link-id-<?php echo $i + 1; ?>"
+                >
+                  <?php echo $linkName; ?>
+                </option>
+                <?php
                                         }
                                     }
                                 } else {
                                     ?>
 
+                <option id="select-option-1" value="Linkedin" class="link-id-1">
+                  Linkedin
+                </option>
+                <option id="select-option-2" value="Github" class="link-id-2">
+                  Github
+                </option>
+                <option
+                  id="select-option-3"
+                  value="Portfolio"
+                  class="link-id-3"
+                >
+                  Portfolio
+                </option>
+                <option
+                  id="select-option-4"
+                  value="Instagram"
+                  class="link-id-4"
+                >
+                  Instagram
+                </option>
+                <option id="select-option-5" value="LeetCode" class="link-id-5">
+                  LeetCode
+                </option>
+                <option id="select-option-6" value="Behance" class="link-id-6">
+                  Behance
+                </option>
+                <option id="select-option-7" value="Other" class="link-id-7">
+                  Other
+                </option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="flex flex-col w-5/12">
+              <input
+                class="resume-form-input"
+                type="url"
+                name="link-select-input"
+                id="link-select-input"
+                placeholder="Link"
+              />
+              <p id="linkAddError" class="text-red-500 mt-2 hidden">
+                Please entre a url
+              </p>
+            </div>
+            <div class="flex flex-col flex-grow-0">
+              <a
+                id="linkSelectBtn"
+                class="bg-theme_green text-white px-4 py-2 rounded-lg md:w-fit"
+              >
+                Add
+              </a>
+            </div>
+          </div>
 
-                                    <option id="select-option-1" value="Linkedin" class="link-id-1">Linkedin</option>
-                                    <option id="select-option-2" value="Github" class="link-id-2">Github</option>
-                                    <option id="select-option-3" value="Portfolio" class="link-id-3">Portfolio</option>
-                                    <option id="select-option-4" value="Instagram" class="link-id-4">Instagram</option>
-                                    <option id="select-option-5" value="LeetCode" class="link-id-5">LeetCode</option>
-                                    <option id="select-option-6" value="Behance" class="link-id-6">Behance</option>
-                                    <option id="select-option-7" value="Other" class="link-id-7">Other</option>
-                                <?php } ?>
-                            </select>
+          <!-- Added Data -->
+          <template id="linkSelectTemplate">
+            <div class="flex w-full space-x-0">
+              <div class="flex flex-col single-input-row-lg space-y-2">
+                <label class="resume-form-label"></label>
+                <input
+                  class="resume-form-input"
+                  type="text"
+                  value=""
+                  required
+                />
+                <input class="hidden link-id" type="text" />
+              </div>
+            </div>
+          </template>
 
-                        </div>
-                        <div class="flex flex-col w-5/12">
-                            <input class="resume-form-input" type="text" name="link-select-input" id="link-select-input"
-                                placeholder="Link" />
-                        </div>
-                        <div class="flex flex-col flex-grow-0">
-                            <a id="linkSelectBtn" class="bg-theme_green text-white px-4 py-2 rounded-lg md:w-fit">
-                                Add
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Added Data -->
-                    <template id="linkSelectTemplate">
-
-                        <div class="flex w-full space-x-0">
-                            <div class="flex flex-col single-input-row-lg space-y-2">
-                                <label class="resume-form-label"></label>
-                                <input class="resume-form-input" type="text" value="" required/>
-                                <input class="hidden link-id" type="text">
-                            </div>
-                        </div>
-                    </template>
-
-                    <?php
+          <?php
                     if ($showResult) {
                         $sno = 1;
                         // $count = count($linksArray);
-                        foreach ($linksArray as $links => $link) {
-                            // echo $links;
-                            // echo $link;
-                            $id = substr($links, -1);
-                            switch ($id) {
-                                case 1:
-                                    $linkName = "Linkedin";
-                                    break;
-
-                                case 2:
-                                    $linkName = "Github";
-                                    break;
-
-                                case 3:
-                                    $linkName = "Portfolio";
-                                    break;
-
-                                case 4:
-                                    $linkName = "Instagram";
-                                    break;
-
-                                case 5:
-                                    $linkName = "LeetCode";
-                                    break;
-
-                                case 6:
-                                    $linkName = "Behance";
-                                    break;
-
-                                case 7:
-                                    $linkName = "Link";
-                                    break;
-
-                                default:
-                                    $linkName = "Link";
-                                    break;
-                            }
-
-                            ?>
-                            <div class="flex w-full space-x-0">
-                                <div class="flex flex-col single-input-row-lg space-y-2">
-
-                                    <label class="resume-form-label"
-                                        for="<?php echo $links; ?>"><?php echo $linkName; ?></label>
-                                    <input class="resume-form-input" type="text" value="<?php echo $link ?>"
-                                        name="<?php echo $links; ?>">
-                                    <input class="hidden link-id" type="text" name="link-id-sno-<?php echo $sno; ?>"
-                                        value="<?php echo $id; ?>">
-                                </div>
-                            </div>
-                            <?php $sno++;
+                        foreach ($linksArray as $links =>
+          $link) { // echo $links; // echo $link; $id = substr($links, -1);
+          switch ($id) { case 1: $linkName = "Linkedin"; break; case 2:
+          $linkName = "Github"; break; case 3: $linkName = "Portfolio"; break;
+          case 4: $linkName = "Instagram"; break; case 5: $linkName =
+          "LeetCode"; break; case 6: $linkName = "Behance"; break; case 7:
+          $linkName = "Link"; break; default: $linkName = "Link"; break; } ?>
+          <div class="flex w-full space-x-0">
+            <div class="flex flex-col single-input-row-lg space-y-2">
+              <label class="resume-form-label" for="<?php echo $links; ?>"
+                ><?php echo $linkName; ?></label
+              >
+              <input
+                class="resume-form-input"
+                type="text"
+                value="<?php echo $link ?>"
+                name="<?php echo $links; ?>"
+              />
+              <input
+                class="hidden link-id"
+                type="text"
+                name="link-id-sno-<?php echo $sno; ?>"
+                value="<?php echo $id; ?>"
+              />
+            </div>
+          </div>
+          <?php $sno++;
                         }
                     } ?>
-                </div>
-            </div>
         </div>
+      </div>
+    </div>
 
-        <?php include_once('../components/resume_builder_submit.php'); ?>
-    </section>
+    <?php include_once('../components/resume_builder_submit.php'); ?>
+  </section>
 </form>
 
 <?php

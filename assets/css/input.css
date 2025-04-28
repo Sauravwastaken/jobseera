@@ -12,7 +12,9 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
+/* * {
+  border: 2px solid red;
+} */
 .site-padding {
   @apply px-64 3xl:px-52 2xl:px-40 xl:px-32 2lg:px-24 lg:px-16 md:px-8 sm:px-6 xs:px-4;
 }

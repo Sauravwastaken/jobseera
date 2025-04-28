@@ -138,7 +138,7 @@ function updateSchoolDetails($connect, $row, $user_details, $class, $step)
 {
 
     echo "<br>User details: ";
-    var_dump($row);
+    // var_dump($row);
     $database_details = json_decode($row[$class], true);
     $user_id = $_SESSION['user_id'];
 
