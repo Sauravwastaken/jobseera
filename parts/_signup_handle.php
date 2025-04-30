@@ -60,7 +60,6 @@ if ($method == "POST") {
             $error_msg = "An account with this email address alrady exists. Please log in with password";
         }
     }
-    header('location: ../signup.php?error_msg=' . $error_msg . '&user_name=' . $user_name . '&$user_id = $stmt2->insert_id;
-user_email=' . $user_email);
+    header('location: ../signup.php?error_msg=' . $error_msg . '&user_name=' . $user_name . '&$user_id = $stmt2->insert_id;user_email=' . $user_email);
 }
 ?>

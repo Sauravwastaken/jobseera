@@ -163,17 +163,6 @@ function validateSelect() {
 
   errorElement.classList.add("hidden");
 }
-// document.querySelector("#higherEducationBtn").addEventListener("click", () => {
-//   args = {
-//     incorrect: "Please enter a valid URL.",
-//   };
-//   formDataErrorHandling(
-//     link,
-//     /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/[a-zA-Z0-9-_.~%]*)*(\?[a-zA-Z0-9-_=&]*)?(#[a-zA-Z0-9-]*)?$/,
-//     args,
-//     false
-//   );
-// });
 
 function formDataErrorHandling(
   inputField,
