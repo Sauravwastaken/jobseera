@@ -160,7 +160,7 @@ include_once('../components/nav.php');
                             <input id="jobDescription" class="resume-form-input" type="text" />
 
 
-                            <a>generate</a>
+                            <a>generate</a>2
                         </div>
                     </div>
 
